@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cycj6rorhy13s"]
+
+[ext_resource type="Script" path="res://Scripts/Wreckingball.gd" id="1_vo6ln"]
+[ext_resource type="Texture2D" uid="uid://dm810sh3ymlpb" path="res://Assets/Images/Hazards/wreckingballig.png" id="2_2h458"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lmmh4"]
+size = Vector2(8.5, 11)
+
+[node name="Wreckingball" type="Area2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_vo6ln")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_2h458")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.25, -0.5)
+shape = SubResource("RectangleShape2D_lmmh4")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

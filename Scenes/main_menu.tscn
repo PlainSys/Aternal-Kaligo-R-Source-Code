@@ -1,0 +1,139 @@
+[gd_scene load_steps=8 format=3 uid="uid://c1e1ox0nepybe"]
+
+[ext_resource type="Texture2D" uid="uid://dgaj1bp30k2jo" path="res://Assets/MainMenu.png" id="1_hlvcu"]
+[ext_resource type="Script" path="res://Scenes/main_menu.gd" id="1_qk8uw"]
+[ext_resource type="Texture2D" uid="uid://cmpqpiipchv5y" path="res://Assets/sawebalogo.png" id="2_fmg4f"]
+[ext_resource type="Texture2D" uid="uid://di0745gbka7w3" path="res://Assets/Images/Deciro menu.png" id="3_b8e4d"]
+[ext_resource type="FontFile" uid="uid://ce678qpmiwlse" path="res://Assets/Fonts/pixeled/Pixeled.ttf" id="4_c2ecq"]
+
+[sub_resource type="Animation" id="Animation_3d1qe"]
+resource_name = "anim"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("thing:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0sx2y"]
+_data = {
+"anim": SubResource("Animation_3d1qe")
+}
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_qk8uw")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+offset_right = 1151.0
+offset_bottom = 664.0
+texture = ExtResource("1_hlvcu")
+
+[node name="logo" type="TextureRect" parent="."]
+offset_left = 181.0
+offset_top = -10.0
+offset_right = 897.0
+offset_bottom = 287.0
+texture = ExtResource("2_fmg4f")
+expand_mode = 1
+
+[node name="Deciro" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = -283.0
+offset_top = 199.0
+offset_right = -51.0
+offset_bottom = 758.0
+texture = ExtResource("3_b8e4d")
+
+[node name="play" type="Button" parent="."]
+offset_left = 449.0
+offset_top = 266.0
+offset_right = 599.0
+offset_bottom = 330.0
+focus_neighbor_top = NodePath("../quit")
+focus_neighbor_bottom = NodePath("../ex")
+theme_override_colors/font_color = Color(0.929412, 0.882353, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_c2ecq")
+theme_override_font_sizes/font_size = 20
+text = "Play"
+
+[node name="ex" type="Button" parent="."]
+offset_left = 414.0
+offset_top = 344.0
+offset_right = 634.0
+offset_bottom = 408.0
+focus_neighbor_top = NodePath("../play")
+focus_neighbor_bottom = NodePath("../op")
+theme_override_colors/font_color = Color(0.929412, 0.882353, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_c2ecq")
+theme_override_font_sizes/font_size = 20
+text = "Extra Stage"
+
+[node name="op" type="Button" parent="."]
+offset_left = 459.0
+offset_top = 419.0
+offset_right = 595.0
+offset_bottom = 483.0
+focus_neighbor_top = NodePath("../ex")
+focus_neighbor_bottom = NodePath("../dj")
+theme_override_colors/font_color = Color(0.929412, 0.882353, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_c2ecq")
+theme_override_font_sizes/font_size = 20
+text = "Options"
+
+[node name="dj" type="Button" parent="."]
+offset_left = 459.0
+offset_top = 497.0
+offset_right = 595.0
+offset_bottom = 561.0
+focus_neighbor_top = NodePath("../op")
+focus_neighbor_bottom = NodePath("../quit")
+theme_override_colors/font_color = Color(0.929412, 0.882353, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_c2ecq")
+theme_override_font_sizes/font_size = 20
+text = "Dj Room"
+
+[node name="quit" type="Button" parent="."]
+offset_left = 459.0
+offset_top = 576.0
+offset_right = 595.0
+offset_bottom = 640.0
+focus_neighbor_top = NodePath("../dj")
+focus_neighbor_bottom = NodePath("../play")
+theme_override_colors/font_color = Color(0.929412, 0.882353, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_c2ecq")
+theme_override_font_sizes/font_size = 20
+text = "Quit"
+
+[node name="Transition" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0sx2y")
+}
+
+[node name="thing" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_right = 1165.0
+offset_bottom = 677.0
+color = Color(0, 0, 0, 1)
+
+[connection signal="pressed" from="play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="ex" to="." method="_on_ex_pressed"]
+[connection signal="pressed" from="op" to="." method="_on_op_pressed"]
+[connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]
+[connection signal="animation_finished" from="Transition" to="." method="_on_transition_animation_finished"]

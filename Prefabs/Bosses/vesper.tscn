@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://cnb3gvi3whp1r"]
+
+[ext_resource type="Texture2D" uid="uid://b8kg6ixm02wp2" path="res://Assets/Images/Boss/Vesper/b1.png" id="1_b8moh"]
+[ext_resource type="Script" path="res://Prefabs/Bosses/vesper.gd" id="1_wb13v"]
+[ext_resource type="Texture2D" uid="uid://bg1qbp4tcswu3" path="res://Assets/Images/Boss/Vesper/b2.png" id="2_jjnfy"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pyql4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_b8moh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_jjnfy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rgugo"]
+size = Vector2(4, 18)
+
+[node name="Vesper" type="Area2D" groups=["damage"]]
+script = ExtResource("1_wb13v")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_pyql4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_rgugo")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

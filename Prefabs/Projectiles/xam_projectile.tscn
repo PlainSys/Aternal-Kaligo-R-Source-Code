@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://vbu2c0bnd8eu"]
+
+[ext_resource type="Texture2D" uid="uid://bee65qbsqi7nr" path="res://Assets/Images/xam-projectile.png" id="1_2gh5h"]
+[ext_resource type="Script" path="res://Prefabs/Projectiles/xam_projectile.gd" id="1_iqd7e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jfwop"]
+
+[node name="Xam-Projectile" type="Area2D"]
+scale = Vector2(5, 5)
+script = ExtResource("1_iqd7e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_2gh5h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_jfwop")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

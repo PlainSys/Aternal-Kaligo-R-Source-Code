@@ -1,0 +1,110 @@
+[gd_scene load_steps=13 format=3 uid="uid://dcjbdum2q2po7"]
+
+[ext_resource type="Script" path="res://STAGES/Remed/r_stage_3_boss.gd" id="1_3faub"]
+[ext_resource type="Texture2D" uid="uid://dsdmdoi6wpv73" path="res://Assets/Images/Boss/Nev/Nev1.png" id="1_5okjm"]
+[ext_resource type="TileSet" uid="uid://b8kc14ov1y3x2" path="res://TILES.tres" id="1_dbgni"]
+[ext_resource type="Texture2D" uid="uid://1yxs657p6rwj" path="res://Assets/Images/Boss/Nev/Nev2.png" id="2_8p1fb"]
+[ext_resource type="PackedScene" uid="uid://cr2kcp1i1bqbj" path="res://Prefabs/player_2.tscn" id="2_37pr7"]
+[ext_resource type="Script" path="res://Scripts/Atarex.gd" id="5_qa36n"]
+[ext_resource type="Texture2D" uid="uid://dd164odtf66ad" path="res://Assets/Images/Boss/Nev/atarex.png" id="5_rv7nh"]
+[ext_resource type="AudioStream" uid="uid://m77j5ww54tac" path="res://Assets/Sounds/hitsound.wav" id="7_mkicl"]
+[ext_resource type="AudioStream" uid="uid://b7jgyn2orwdyi" path="res://Assets/Sounds/bulletshot.wav" id="8_on5ps"]
+[ext_resource type="PackedScene" uid="uid://dn17jj4ut3hh2" path="res://Prefabs/stageend.tscn" id="10_5e278"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e0417"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_5okjm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_8p1fb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wysej"]
+size = Vector2(40, 243)
+
+[node name="r_stage_3_boss" type="Node2D"]
+script = ExtResource("1_3faub")
+
+[node name="Nev" type="AnimatedSprite2D" parent="."]
+position = Vector2(438, 126)
+scale = Vector2(0.435, 0.435)
+sprite_frames = SubResource("SpriteFrames_e0417")
+autoplay = "default"
+frame_progress = 0.402294
+
+[node name="glass" type="ColorRect" parent="."]
+offset_right = 657.0
+offset_bottom = 141.0
+color = Color(1, 1, 1, 0.443137)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 931.0
+offset_right = 1133.0
+offset_bottom = 195.0
+color = Color(0.27451, 0.27451, 0.27451, 1)
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("1_dbgni")
+format = 2
+layer_0/tile_data = PackedInt32Array(262145, 0, 0, 327681, 0, 0, 393217, 0, 0, 458753, 0, 0, 524289, 0, 0, 589825, 0, 0, 655361, 0, 0, 655362, 0, 0, 655363, 0, 0, 655364, 0, 0, 655365, 0, 0, 655366, 0, 0, 655367, 0, 0, 655368, 0, 0, 655369, 0, 0, 655370, 0, 0, 655371, 0, 0, 655372, 0, 0, 655373, 0, 0, 655374, 0, 0, 655375, 0, 0, 655376, 0, 0, 655377, 0, 0, 589841, 0, 0, 524305, 0, 0, 458769, 0, 0, 393233, 0, 0, 327697, 0, 0, 262161, 0, 0, 262160, 0, 0, 262159, 0, 0, 262158, 0, 0, 262157, 0, 0, 262156, 0, 0, 327691, 0, 0, 327690, 0, 0, 327689, 0, 0, 327688, 0, 0, 327687, 0, 0, 327686, 0, 0, 327685, 0, 0, 327684, 0, 0, 327683, 0, 0, 327682, 0, 0, 262146, 0, 0, 393218, 0, 0, 458754, 0, 0, 524290, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 0, 0, 589835, 0, 0, 589836, 0, 0, 589837, 0, 0, 589838, 0, 0, 589839, 0, 0, 589840, 0, 0, 524304, 0, 0, 458768, 0, 0, 393232, 0, 0, 327696, 0, 0, 327695, 0, 0, 327694, 0, 0, 327693, 0, 0, 327692, 0, 0, 393226, 0, 0, 393225, 0, 0, 393224, 0, 0, 393223, 0, 0, 393222, 0, 0, 393221, 0, 0, 393220, 0, 0, 393219, 0, 0, 458755, 0, 0, 524291, 0, 0, 524292, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 524298, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 0, 0, 458765, 0, 0, 458766, 0, 0, 393230, 0, 0, 393229, 0, 0, 393228, 0, 0, 393227, 0, 0, 458759, 0, 0, 458758, 0, 0, 458757, 0, 0, 458756, 0, 0, 458767, 0, 0, 524302, 0, 0, 393231, 0, 0, 524303, 0, 0, 458760, 0, 0, 458761, 0, 0, 458762, 0, 0, 458763, 0, 0, 458764, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 0, 0, 262152, 0, 0, 262153, 0, 0, 262154, 0, 0, 262155, 0, 0, 196624, 0, 0, 196625, 0, 0, 196623, 0, 0, 196622, 0, 0, 196621, 0, 0, 196620, 0, 0, 196619, 0, 0, 196618, 0, 0, 196617, 0, 0, 196616, 0, 0, 196615, 0, 0, 196614, 0, 0, 196613, 0, 0, 196612, 0, 0, 196611, 0, 0, 196610, 0, 0, 196609, 0, 0, 655360, 10, 0, 589824, 10, 0, 524288, 10, 0, 131072, 10, 0, 196608, 10, 0, 262144, 10, 0, 327680, 10, 0, 393216, 10, 0, 458752, 10, 0, 655378, 10, 0, 589842, 10, 0, 524306, 10, 0, 458770, 10, 0, 393234, 10, 0, 327698, 10, 0, 262162, 10, 0, 196626, 10, 0, 131090, 10, 0, 65554, 10, 0, 18, 10, 0, -65518, 10, 0, 131089, 5, 0, 65553, 5, 0, 17, 10, 0, -65519, 10, 0, -65520, 10, 0, -65521, 10, 0, -65522, 10, 0, 14, 10, 0, 65550, 5, 0, 131086, 5, 0, 131085, 5, 0, 131084, 5, 0, 131083, 5, 0, 131082, 5, 0, 131081, 5, 0, 131080, 5, 0, 131079, 5, 0, 131078, 5, 0, 131077, 5, 0, 131076, 5, 0, 131075, 5, 0, 131074, 5, 0, 131073, 5, 0, 65537, 5, 0, 65538, 5, 0, 65539, 5, 0, 65549, 5, 0, 65548, 5, 0, 65547, 5, 0, 65546, 5, 0, 65540, 5, 0, 2, 10, 0, 3, 10, 0, 4, 10, 0, 1, 10, 0, 10, 10, 0, 11, 10, 0, 12, 10, 0, 13, 10, 0, -65523, 10, 0, -65524, 10, 0, -65525, 10, 0, -65526, 10, 0, -65527, 10, 0, -65528, 10, 0, -65529, 10, 0, -65530, 10, 0, -65531, 10, 0, -65532, 10, 0, -65533, 10, 0, -65534, 10, 0, -65535, 10, 0, -65536, 10, 0, 0, 10, 0, 65536, 10, 0, 720896, 21, 0, 720897, 21, 0, 720898, 21, 0, 720899, 21, 0, 720900, 21, 0, 720901, 21, 0, 786438, 21, 0, 786439, 21, 0, 786440, 21, 0, 786441, 21, 0, 786442, 21, 0, 786443, 21, 0, 786444, 21, 0, 786445, 21, 0, 786446, 21, 0, 786447, 21, 0, 786448, 21, 0, 786449, 21, 0, 786450, 21, 0, 720914, 21, 0, 720913, 21, 0, 720912, 21, 0, 720911, 21, 0, 720910, 21, 0, 720909, 21, 0, 720908, 21, 0, 720907, 21, 0, 720906, 21, 0, 720905, 21, 0, 720904, 21, 0, 720903, 21, 0, 720902, 21, 0, 786434, 21, 0, 786433, 21, 0, 786432, 21, 0, 786435, 21, 0, 786436, 21, 0, 786437, 21, 0)
+
+[node name="player" parent="." instance=ExtResource("2_37pr7")]
+position = Vector2(257, 381)
+
+[node name="Atarex" type="Area2D" parent="." groups=["damage"]]
+position = Vector2(1037, 464)
+scale = Vector2(-0.7, 0.7)
+script = ExtResource("5_qa36n")
+
+[node name="Sprite2D" type="Sprite2D" parent="Atarex"]
+texture = ExtResource("5_rv7nh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Atarex"]
+position = Vector2(-30, -79.5)
+shape = SubResource("RectangleShape2D_wysej")
+
+[node name="FiringPos" type="Node2D" parent="Atarex"]
+
+[node name="gun" type="Node2D" parent="Atarex/FiringPos"]
+position = Vector2(167.143, -101.429)
+
+[node name="loop" type="Timer" parent="Atarex"]
+wait_time = 1.5
+autostart = true
+
+[node name="Timer" type="Timer" parent="Atarex"]
+wait_time = 0.1
+
+[node name="cooldown" type="Timer" parent="Atarex"]
+one_shot = true
+
+[node name="iframes" type="Timer" parent="Atarex"]
+wait_time = 0.1
+
+[node name="hit" type="AudioStreamPlayer" parent="Atarex"]
+stream = ExtResource("7_mkicl")
+
+[node name="shoot" type="AudioStreamPlayer" parent="Atarex"]
+stream = ExtResource("8_on5ps")
+
+[node name="Timer2" type="Timer" parent="Atarex"]
+wait_time = 0.1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="StageEnd" parent="CanvasLayer" instance=ExtResource("10_5e278")]
+visible = false
+
+[node name="theme" type="AudioStreamPlayer" parent="."]
+
+[connection signal="body_entered" from="Atarex" to="Atarex" method="_on_body_entered"]
+[connection signal="timeout" from="Atarex/loop" to="Atarex" method="_on_loop_timeout"]
+[connection signal="timeout" from="Atarex/Timer" to="Atarex" method="_on_timer_timeout"]
+[connection signal="timeout" from="Atarex/iframes" to="Atarex" method="_on_iframes_timeout"]
+[connection signal="timeout" from="Atarex/Timer2" to="." method="_on_timer_2_timeout"]

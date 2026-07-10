@@ -1,0 +1,68 @@
+[gd_scene load_steps=8 format=3 uid="uid://brfxh7aknhfyg"]
+
+[ext_resource type="Script" path="res://Scripts/grunt_bike_1.gd" id="1_14imh"]
+[ext_resource type="Texture2D" uid="uid://cdg1ejvm2a1ut" path="res://Assets/Images/Effects/explo2.png" id="2_di5to"]
+[ext_resource type="Texture2D" uid="uid://bej56lkogr2f1" path="res://Assets/Images/Enemies/GruntCar.png" id="3_xj3lf"]
+[ext_resource type="AudioStream" uid="uid://m77j5ww54tac" path="res://Assets/Sounds/hitsound.wav" id="4_03ned"]
+[ext_resource type="AudioStream" uid="uid://c21b8fl3csq5" path="res://Assets/Sounds/Explosion.wav" id="5_axxl6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kxlt5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_di5to")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_xj3lf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w70rs"]
+size = Vector2(17, 17)
+
+[node name="GruntBike1" type="Area2D" groups=["damage"]]
+scale = Vector2(3, 3)
+script = ExtResource("1_14imh")
+canShoot = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(27, 2)
+sprite_frames = SubResource("SpriteFrames_kxlt5")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(15.5, 7.5)
+shape = SubResource("RectangleShape2D_w70rs")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(13.5, -0.999999)
+scale = Vector2(4.05, 3.7)
+
+[node name="FiringPosition" type="Node2D" parent="."]
+
+[node name="gun" type="Node2D" parent="FiringPosition"]
+position = Vector2(-12, 5)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="cooldown" type="Timer" parent="."]
+one_shot = true
+
+[node name="hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_03ned")
+
+[node name="death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_axxl6")
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

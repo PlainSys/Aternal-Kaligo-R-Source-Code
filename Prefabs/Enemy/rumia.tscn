@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=3 uid="uid://ct80hrl6gg8x4"]
+
+[ext_resource type="Texture2D" uid="uid://mo41wl4ro1sl" path="res://Assets/Images/Effects/oilsplash1.png" id="1_4pnqn"]
+[ext_resource type="Script" path="res://Scripts/rumia.gd" id="1_f0qqb"]
+[ext_resource type="Texture2D" uid="uid://b8302csqemmxb" path="res://Assets/Images/Effects/oilsplash2.png" id="2_8ttlx"]
+[ext_resource type="Texture2D" uid="uid://cu0b3td0vhad8" path="res://Assets/Images/Enemies/Rumia/Rumia1.png" id="3_xpq47"]
+[ext_resource type="Texture2D" uid="uid://c0cw5i6n2pw1q" path="res://Assets/Images/Enemies/Rumia/Rumia2.png" id="4_4saiv"]
+[ext_resource type="Script" path="res://Scripts/ruhitbox.gd" id="6_aqaw6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wwmwx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_4pnqn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_8ttlx")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_xpq47")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4saiv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kk7ug"]
+size = Vector2(13, 37)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l8ebu"]
+size = Vector2(37, 44)
+
+[node name="Rumia" type="CharacterBody2D"]
+scale = Vector2(2.5, 2.5)
+script = ExtResource("1_f0qqb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-13, -37)
+sprite_frames = SubResource("SpriteFrames_wwmwx")
+autoplay = "default"
+frame_progress = 0.649462
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-6.5, -35.5)
+shape = SubResource("RectangleShape2D_kk7ug")
+
+[node name="ruhitbox" type="Area2D" parent="." groups=["damage"]]
+script = ExtResource("6_aqaw6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ruhitbox"]
+position = Vector2(-15.5, -35)
+shape = SubResource("RectangleShape2D_l8ebu")
+debug_color = Color(0.784314, 0, 0.105882, 0.419608)
+
+[node name="Timer" type="Timer" parent="ruhitbox"]
+wait_time = 0.1
+
+[node name="death" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="area_entered" from="ruhitbox" to="ruhitbox" method="_on_area_entered"]
+[connection signal="timeout" from="ruhitbox/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="death" to="." method="_on_death_timeout"]

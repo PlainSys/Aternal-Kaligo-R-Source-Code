@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://bh4dvvuaswlon"]
+
+[ext_resource type="Texture2D" uid="uid://cdg1ejvm2a1ut" path="res://Assets/Images/Effects/explo2.png" id="1_ttmrl"]
+[ext_resource type="Script" path="res://Prefabs/bomb.gd" id="1_yws5a"]
+[ext_resource type="Texture2D" uid="uid://gsguigypdtci" path="res://Assets/Images/Hazards/bomb.png" id="2_lrsci"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ydcjb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ttmrl")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_lrsci")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3xovj"]
+size = Vector2(9, 12)
+
+[node name="Bomb" type="Area2D"]
+scale = Vector2(2.5, 2.5)
+script = ExtResource("1_yws5a")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_ydcjb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2.5, -1)
+shape = SubResource("RectangleShape2D_3xovj")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,17 @@
+res://STAGES/lazo_true_ending.gd
+res://STAGES/lazo_true_ending.tscn
+res://Scripts/btn.gd
+res://exTiles.tres
+res://TILES.tres
+res://Scenes/main_menu.tscn
+res://Scenes/hud.tscn
+res://Prefabs/player_2.tscn
+res://Scenes/intro.tscn
+res://STAGES/Deciro/d_extrastage.tscn
+res://STAGES/Remed/r_stage_5.tscn
+res://Scenes/character_select.tscn
+res://Scenes/continue.tscn
+res://STAGES/lazo_bonus_ending.gd
+res://STAGES/lazo_bonus_ending.tscn
+res://Prefabs/stageend.tscn
+res://Prefabs/stageend.gd

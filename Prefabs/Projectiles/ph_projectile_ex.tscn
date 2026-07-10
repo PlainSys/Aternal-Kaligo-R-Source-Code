@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://csfvd0rx8y4ha"]
+
+[ext_resource type="Texture2D" uid="uid://bee65qbsqi7nr" path="res://Assets/Images/xam-projectile.png" id="1_wew3n"]
+[ext_resource type="Script" path="res://Prefabs/Projectiles/ph_projectile_ex.gd" id="1_ysxmk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_to06f"]
+size = Vector2(32, 18)
+
+[node name="PHProjectileEx" type="Node2D"]
+modulate = Color(1, 0, 1, 1)
+top_level = true
+script = ExtResource("1_ysxmk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("1_wew3n")
+
+[node name="projectileHitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="projectileHitbox"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_to06f")
+
+[connection signal="area_entered" from="projectileHitbox" to="." method="_on_projectile_hitbox_area_entered"]

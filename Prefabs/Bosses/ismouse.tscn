@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=3 uid="uid://dnp6wwse7tw6m"]
+
+[ext_resource type="Script" path="res://Scripts/Ismouse.gd" id="1_k6sok"]
+[ext_resource type="Texture2D" uid="uid://cxv15u1wsjf3e" path="res://Assets/Images/Effects/bloodsplash.png" id="2_7npld"]
+[ext_resource type="Texture2D" uid="uid://dd0m3bdby7lj" path="res://Assets/Images/Boss/Ismous/ismous1.png" id="3_dm01n"]
+[ext_resource type="Texture2D" uid="uid://cds7skq6cxcrn" path="res://Assets/Images/Boss/Ismous/ismous2.png" id="4_chns2"]
+[ext_resource type="AudioStream" uid="uid://m77j5ww54tac" path="res://Assets/Sounds/hitsound.wav" id="5_5eqnh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n1245"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7npld")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_dm01n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_chns2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_33vna"]
+size = Vector2(56, 403)
+
+[node name="Ismouse" type="Area2D" groups=["damage"]]
+script = ExtResource("1_k6sok")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_n1245")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(52, 11.5)
+shape = SubResource("RectangleShape2D_33vna")
+
+[node name="death" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="invisCd" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="cooldown" type="Timer" parent="."]
+one_shot = true
+
+[node name="FiringPosition" type="Node2D" parent="."]
+
+[node name="position" type="Node2D" parent="FiringPosition"]
+position = Vector2(-72, -46)
+
+[node name="hurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_5eqnh")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="death" to="." method="_on_death_timeout"]
+[connection signal="timeout" from="invisCd" to="." method="_on_invis_cd_timeout"]

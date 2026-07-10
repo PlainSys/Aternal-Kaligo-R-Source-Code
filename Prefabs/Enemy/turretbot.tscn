@@ -1,0 +1,78 @@
+[gd_scene load_steps=10 format=3 uid="uid://48x8w4igrcxn"]
+
+[ext_resource type="Texture2D" uid="uid://d081oh685gxto" path="res://Assets/Images/Enemies/Turretbot/Turret1.png" id="1_0qka6"]
+[ext_resource type="Script" path="res://Scripts/turretbot.gd" id="1_1qnus"]
+[ext_resource type="Texture2D" uid="uid://d0dx6jmb7uhin" path="res://Assets/Images/Enemies/Turretbot/Turret2.png" id="2_im0dm"]
+[ext_resource type="Texture2D" uid="uid://mo41wl4ro1sl" path="res://Assets/Images/Effects/oilsplash1.png" id="3_83s48"]
+[ext_resource type="Texture2D" uid="uid://b8302csqemmxb" path="res://Assets/Images/Effects/oilsplash2.png" id="4_0hfyh"]
+[ext_resource type="Script" path="res://Scripts/tbhitbox.gd" id="6_1rfhl"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x6b3i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_0qka6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_im0dm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_83s48")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0hfyh")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eljmv"]
+size = Vector2(20, 51)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6flxu"]
+size = Vector2(68, 65)
+
+[node name="Turretbot" type="CharacterBody2D"]
+script = ExtResource("1_1qnus")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_x6b3i")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6.5)
+shape = SubResource("RectangleShape2D_eljmv")
+
+[node name="tbhitbox" type="Area2D" parent="." groups=["damage"]]
+script = ExtResource("6_1rfhl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tbhitbox"]
+position = Vector2(-20, 5.5)
+shape = SubResource("RectangleShape2D_6flxu")
+debug_color = Color(0.760784, 0, 0.0509804, 0.419608)
+
+[node name="Timer" type="Timer" parent="tbhitbox"]
+wait_time = 0.1
+
+[node name="FiringPosition" type="Node2D" parent="."]
+
+[node name="Gun" type="Node2D" parent="FiringPosition"]
+position = Vector2(33, -15)
+
+[node name="death" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="cooldown" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="area_entered" from="tbhitbox" to="tbhitbox" method="_on_area_entered"]
+[connection signal="timeout" from="tbhitbox/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="death" to="." method="_on_death_timeout"]

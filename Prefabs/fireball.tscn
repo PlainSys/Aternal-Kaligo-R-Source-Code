@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://ct23ao3q1d6f2"]
+
+[ext_resource type="Script" path="res://Prefabs/iceball.gd" id="1_tuv2c"]
+[ext_resource type="Texture2D" uid="uid://c41qbwbbhmkdi" path="res://Assets/Images/Hazards/fireball.png" id="2_f0848"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kepxh"]
+size = Vector2(174.111, 174)
+
+[node name="Fireball" type="Area2D"]
+scale = Vector2(0.18, 0.18)
+script = ExtResource("1_tuv2c")
+horizentalspeed = 400
+hardSpeed = 450
+berzerkSpeed = 600
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_f0848")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(24.0556, 5)
+shape = SubResource("RectangleShape2D_kepxh")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

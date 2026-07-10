@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://k76s3tqh4h2d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t4bqp"]
+size = Vector2(160, 68)
+
+[node name="door1" type="StaticBody2D"]
+position = Vector2(360, -580)
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_top = 20.0
+offset_right = 160.0
+offset_bottom = 40.0
+color = Color(0.380392, 0.380392, 0.380392, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(80, 6)
+shape = SubResource("RectangleShape2D_t4bqp")

@@ -1,0 +1,278 @@
+[gd_scene load_steps=22 format=3 uid="uid://ithkpio1pwdv"]
+
+[ext_resource type="Script" path="res://STAGES/Remed/r_stage_1_dialog.gd" id="1_ob3pb"]
+[ext_resource type="Texture2D" uid="uid://c0xf8mlfudxru" path="res://Assets/tiles/floor.png" id="2_118x1"]
+[ext_resource type="Texture2D" uid="uid://d8dfrgpiujin" path="res://Assets/Images/StageArt/Stage1D/buildings0001.png" id="3_dgggv"]
+[ext_resource type="Texture2D" uid="uid://puoy6sn77siv" path="res://Assets/Images/StageArt/Stage1D/buildings0002.png" id="4_7a5pu"]
+[ext_resource type="Texture2D" uid="uid://djdphatj3r5l4" path="res://Assets/Images/StageArt/Stage1D/buildings0003.png" id="5_ejj7l"]
+[ext_resource type="Texture2D" uid="uid://bunlildt1d348" path="res://Assets/Images/StageArt/Stage1D/buildings0004.png" id="6_75ku3"]
+[ext_resource type="Texture2D" uid="uid://dc3r76cor5olg" path="res://Assets/Images/StageArt/Stage1D/newtrainlol.png" id="7_lgq73"]
+[ext_resource type="Texture2D" uid="uid://cm403xhdnqsj3" path="res://Assets/Images/Remed/Remed_Spritesheet.png" id="8_e767n"]
+[ext_resource type="Texture2D" uid="uid://dd0m3bdby7lj" path="res://Assets/Images/Boss/Ismous/ismous1.png" id="9_uf3h3"]
+[ext_resource type="PackedScene" uid="uid://dn17jj4ut3hh2" path="res://Prefabs/stageend.tscn" id="10_0qfow"]
+[ext_resource type="PackedScene" uid="uid://draj7u8xoffqn" path="res://Prefabs/dialog.tscn" id="11_fgupd"]
+[ext_resource type="Texture2D" uid="uid://b1m0wjni1o8hs" path="res://Assets/Images/Remed/Portraits/Remed0013.png" id="12_lseva"]
+[ext_resource type="Texture2D" uid="uid://okhrl3udljxi" path="res://Assets/Images/Remed/Portraits/Remed0014.png" id="13_bk64i"]
+[ext_resource type="Texture2D" uid="uid://cu10hg2buq6lk" path="res://Assets/Images/Deciro/Portraits/Phastt0013.png" id="14_uijuu"]
+[ext_resource type="Texture2D" uid="uid://coctg0ttnpghq" path="res://Assets/Images/Boss/Ismous/Portrait.png" id="15_j3gbq"]
+[ext_resource type="FontFile" uid="uid://ce678qpmiwlse" path="res://Assets/Fonts/pixeled/Pixeled.ttf" id="16_fqbt4"]
+[ext_resource type="AudioStream" uid="uid://c21b8fl3csq5" path="res://Assets/Sounds/Explosion.wav" id="17_rly07"]
+[ext_resource type="AudioStream" uid="uid://dc7s8q5pdj2ba" path="res://Assets/Music/S_4.wav" id="18_bpy2n"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w876a"]
+texture = ExtResource("2_118x1")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_1e5d2"]
+sources/0 = SubResource("TileSetAtlasSource_w876a")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8sbk1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_dgggv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7a5pu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ejj7l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_75ku3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[node name="r_Stage1_boss" type="Node2D"]
+script = ExtResource("1_ob3pb")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_1e5d2")
+cell_quadrant_size = 62
+format = 2
+
+[node name="Skybox" type="ColorRect" parent="."]
+offset_left = -257.0
+offset_right = 1483.0
+offset_bottom = 257.0
+color = Color(0.564706, 0, 0.0862745, 1)
+
+[node name="Buildings" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(579, 272)
+scale = Vector2(5.36, 5.36)
+sprite_frames = SubResource("SpriteFrames_8sbk1")
+autoplay = "default"
+frame_progress = 0.212308
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(578.778, 318)
+scale = Vector2(7.4, 7.4)
+texture = ExtResource("7_lgq73")
+
+[node name="deciro" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(189.25, 433.14)
+scale = Vector2(3.55085, 3.55085)
+texture = ExtResource("8_e767n")
+hframes = 3
+vframes = 2
+
+[node name="Pen" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1026, 423)
+scale = Vector2(-0.6, 0.6)
+texture = ExtResource("9_uf3h3")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="StageEnd" parent="CanvasLayer" instance=ExtResource("10_0qfow")]
+visible = false
+
+[node name="dialog" parent="CanvasLayer" instance=ExtResource("11_fgupd")]
+
+[node name="deciro1" type="TextureRect" parent="CanvasLayer/dialog"]
+layout_mode = 0
+offset_left = 175.0
+offset_top = 382.0
+offset_right = 605.0
+offset_bottom = 695.0
+texture = ExtResource("12_lseva")
+expand_mode = 2
+
+[node name="deciro2" type="TextureRect" parent="CanvasLayer/dialog"]
+visible = false
+layout_mode = 0
+offset_left = 175.0
+offset_top = 382.0
+offset_right = 605.0
+offset_bottom = 695.0
+texture = ExtResource("13_bk64i")
+expand_mode = 2
+
+[node name="deciro3" type="TextureRect" parent="CanvasLayer/dialog"]
+visible = false
+layout_mode = 0
+offset_left = 175.0
+offset_top = 382.0
+offset_right = 605.0
+offset_bottom = 695.0
+texture = ExtResource("14_uijuu")
+expand_mode = 2
+
+[node name="pen" type="TextureRect" parent="CanvasLayer/dialog"]
+visible = false
+layout_mode = 0
+offset_left = 261.0
+offset_top = 337.0
+offset_right = 438.0
+offset_bottom = 723.0
+texture = ExtResource("15_j3gbq")
+
+[node name="dialog1" type="Label" parent="CanvasLayer/dialog"]
+layout_mode = 0
+offset_left = 443.0
+offset_top = 474.0
+offset_right = 894.0
+offset_bottom = 633.0
+theme_override_fonts/font = ExtResource("16_fqbt4")
+theme_override_font_sizes/font_size = 16
+text = "Lazo: Okay, who the hell are you?"
+
+[node name="dialog2" type="Label" parent="CanvasLayer/dialog"]
+visible = false
+layout_mode = 0
+offset_left = 443.0
+offset_top = 474.0
+offset_right = 894.0
+offset_bottom = 633.0
+theme_override_fonts/font = ExtResource("16_fqbt4")
+theme_override_font_sizes/font_size = 16
+text = "Ismous: Uh, just some random
+guy-"
+
+[node name="dialog4" type="Label" parent="CanvasLayer/dialog"]
+visible = false
+layout_mode = 0
+offset_left = 443.0
+offset_top = 474.0
+offset_right = 894.0
+offset_bottom = 633.0
+theme_override_fonts/font = ExtResource("16_fqbt4")
+theme_override_font_sizes/font_size = 16
+text = "Lazo: Are you that one
+terrorist???"
+
+[node name="dialog5" type="Label" parent="CanvasLayer/dialog"]
+visible = false
+layout_mode = 0
+offset_left = 426.0
+offset_top = 475.0
+offset_right = 891.0
+offset_bottom = 634.0
+theme_override_fonts/font = ExtResource("16_fqbt4")
+theme_override_font_sizes/font_size = 16
+text = "Ismous: ..."
+
+[node name="dialog6" type="Label" parent="CanvasLayer/dialog"]
+visible = false
+layout_mode = 0
+offset_left = 443.0
+offset_top = 474.0
+offset_right = 894.0
+offset_bottom = 633.0
+theme_override_fonts/font = ExtResource("16_fqbt4")
+theme_override_font_sizes/font_size = 16
+text = "Ismous: No-"
+
+[node name="dialog7" type="Label" parent="CanvasLayer/dialog"]
+visible = false
+layout_mode = 0
+offset_left = 443.0
+offset_top = 474.0
+offset_right = 894.0
+offset_bottom = 633.0
+theme_override_fonts/font = ExtResource("16_fqbt4")
+theme_override_font_sizes/font_size = 16
+text = "Lazo: This guy is hiring
+terrorists???"
+
+[node name="dialog8" type="Label" parent="CanvasLayer/dialog"]
+visible = false
+layout_mode = 0
+offset_left = 443.0
+offset_top = 474.0
+offset_right = 894.0
+offset_bottom = 633.0
+theme_override_fonts/font = ExtResource("16_fqbt4")
+theme_override_font_sizes/font_size = 16
+text = "Ismous: Ok I don't get why
+either. Mustve been desperate."
+
+[node name="dialog9" type="Label" parent="CanvasLayer/dialog"]
+visible = false
+layout_mode = 0
+offset_left = 443.0
+offset_top = 474.0
+offset_right = 894.0
+offset_bottom = 633.0
+theme_override_fonts/font = ExtResource("16_fqbt4")
+theme_override_font_sizes/font_size = 16
+text = "Lazo: Alright, whatever. I'll
+kill you now."
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
+offset_left = -21.0
+offset_right = 1171.0
+offset_bottom = 672.0
+
+[node name="crash" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("17_rly07")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.8
+autostart = true
+
+[node name="dia1" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="dia2" type="Timer" parent="."]
+wait_time = 4.0
+
+[node name="dia3" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="dia4" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="dia5" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="dia6" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="dia7" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="dia8" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="mixtape" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_bpy2n")
+autoplay = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="dia1" to="." method="_on_dia_1_timeout"]
+[connection signal="timeout" from="dia2" to="." method="_on_dia_2_timeout"]
+[connection signal="timeout" from="dia3" to="." method="_on_dia_3_timeout"]
+[connection signal="timeout" from="dia4" to="." method="_on_dia_4_timeout"]
+[connection signal="timeout" from="dia5" to="." method="_on_dia_5_timeout"]
+[connection signal="timeout" from="dia6" to="." method="_on_dia_6_timeout"]
+[connection signal="timeout" from="dia7" to="." method="_on_dia_7_timeout"]
+[connection signal="timeout" from="dia8" to="." method="_on_dia_8_timeout"]

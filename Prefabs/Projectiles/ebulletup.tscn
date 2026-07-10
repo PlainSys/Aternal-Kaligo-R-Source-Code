@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://ory3j2b61ow0"]
+
+[ext_resource type="Script" path="res://Scripts/ebullet.gd" id="1_5mry3"]
+[ext_resource type="Texture2D" uid="uid://bxy8s6it5ri6e" path="res://Assets/Images/Hazards/ebullet.png" id="2_dqww2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rut4p"]
+size = Vector2(20, 12)
+
+[node name="ebullet" type="Area2D"]
+script = ExtResource("1_5mry3")
+dir = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_dqww2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_rut4p")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-0.5, 0)
+scale = Vector2(1.85, 1)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

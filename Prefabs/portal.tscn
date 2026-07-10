@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://7ueybavs5k3o"]
+
+[ext_resource type="Texture2D" uid="uid://c6bo4w4rpxibd" path="res://Assets/Images/portal.png" id="1_fa11v"]
+[ext_resource type="Script" path="res://Prefabs/portal.gd" id="1_tw1or"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cdvt0"]
+size = Vector2(210, 528)
+
+[node name="Portal" type="Area2D"]
+position = Vector2(610, 448)
+scale = Vector2(0.3, 0.3)
+script = ExtResource("1_tw1or")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_fa11v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, 40)
+shape = SubResource("RectangleShape2D_cdvt0")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

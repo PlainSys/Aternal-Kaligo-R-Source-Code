@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bc3tt7m7sruk6"]
+
+[ext_resource type="Script" path="res://Prefabs/Projectiles/ljbullet_1.gd" id="1_uxvll"]
+[ext_resource type="Texture2D" uid="uid://dph7jlf5myajx" path="res://Assets/Images/Hazards/longjimbullet.png" id="2_hvhtq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m1o6w"]
+size = Vector2(230, 196)
+
+[node name="ljbullet1" type="Area2D"]
+scale = Vector2(0.1, 0.1)
+script = ExtResource("1_uxvll")
+direction = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_hvhtq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, -4)
+shape = SubResource("RectangleShape2D_m1o6w")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(5.50001, 9.00001)
+scale = Vector2(22.85, 24)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

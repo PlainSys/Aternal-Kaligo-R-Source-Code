@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://dg4u1qq0akl7s"]
+
+[ext_resource type="Script" path="res://Prefabs/Bosses/bumathule.gd" id="1_uc65c"]
+[ext_resource type="Texture2D" uid="uid://cvyx1xhiiwuha" path="res://Assets/Images/Boss/Bum/Bum1.png" id="1_xnok3"]
+[ext_resource type="Texture2D" uid="uid://blqfma0x5p05o" path="res://Assets/Images/forcefield.png" id="3_v8d56"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pai47"]
+size = Vector2(75, 366)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pawmi"]
+size = Vector2(520, 570)
+
+[node name="Bumathule" type="Area2D" groups=["damage"]]
+script = ExtResource("1_uc65c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_xnok3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-27.5, 39)
+shape = SubResource("RectangleShape2D_pai47")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="Shield" type="Area2D" parent="."]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Shield"]
+position = Vector2(-27, 0)
+scale = Vector2(1.3275, 1.3275)
+texture = ExtResource("3_v8d56")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shield"]
+position = Vector2(-27, 3)
+shape = SubResource("RectangleShape2D_pawmi")
+disabled = true
+debug_color = Color(0, 0.141176, 0.270588, 0.419608)
+
+[node name="shield1" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="shield2" type="Timer" parent="."]
+wait_time = 10.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="shield1" to="." method="_on_shield_1_timeout"]
+[connection signal="timeout" from="shield2" to="." method="_on_shield_2_timeout"]

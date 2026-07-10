@@ -1,0 +1,90 @@
+[gd_scene load_steps=14 format=3 uid="uid://bv5o33ptkeh2x"]
+
+[ext_resource type="Texture2D" uid="uid://bsywuayjq6hx1" path="res://Assets/Images/Enemies/Grunt/Grunt6.png" id="1_e02ry"]
+[ext_resource type="Script" path="res://Scripts/grunt.gd" id="1_fhi12"]
+[ext_resource type="Texture2D" uid="uid://d0i7wpjopxcy7" path="res://Assets/Images/Enemies/Grunt/Grunt7.png" id="2_txpwo"]
+[ext_resource type="Texture2D" uid="uid://bjqcqnxc2t5ha" path="res://Assets/Images/Enemies/Grunt/Grunt8.png" id="3_it1ft"]
+[ext_resource type="Texture2D" uid="uid://3357pye6wlo7" path="res://Assets/Images/Enemies/Grunt/Grunt2.png" id="4_gw5d5"]
+[ext_resource type="Texture2D" uid="uid://buvenk0il8fvf" path="res://Assets/Images/Enemies/Grunt/Grunt3.png" id="5_bt8ms"]
+[ext_resource type="Script" path="res://Scripts/ghitbox.gd" id="7_vxwxd"]
+[ext_resource type="AudioStream" uid="uid://cbyqncuicfm5v" path="res://Assets/Sounds/punch.wav" id="8_wa4md"]
+[ext_resource type="AudioStream" uid="uid://b0vf37lrpvbcr" path="res://Assets/Sounds/Enemydeath.wav" id="9_acpj1"]
+[ext_resource type="AudioStream" uid="uid://m77j5ww54tac" path="res://Assets/Sounds/hitsound.wav" id="10_wvmuv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8ekp6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_e02ry")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_txpwo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_it1ft")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_gw5d5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_bt8ms")
+}],
+"loop": true,
+"name": &"punch",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hj7hp"]
+size = Vector2(7, 53)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r5a10"]
+size = Vector2(35.3333, 58)
+
+[node name="Grunt" type="CharacterBody2D"]
+texture_filter = 1
+scale = Vector2(3, 3)
+script = ExtResource("1_fhi12")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8ekp6")
+autoplay = "default"
+frame_progress = 0.843767
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5.5, 0)
+shape = SubResource("RectangleShape2D_hj7hp")
+
+[node name="ghitbox" type="Area2D" parent="." groups=["damage"]]
+script = ExtResource("7_vxwxd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ghitbox"]
+position = Vector2(-17.6667, 0)
+shape = SubResource("RectangleShape2D_r5a10")
+
+[node name="Timer" type="Timer" parent="ghitbox"]
+wait_time = 0.1
+
+[node name="punctimer" type="Timer" parent="ghitbox"]
+wait_time = 0.1
+
+[node name="punchSound" type="AudioStreamPlayer" parent="ghitbox"]
+stream = ExtResource("8_wa4md")
+
+[node name="deathSound" type="AudioStreamPlayer" parent="ghitbox"]
+stream = ExtResource("9_acpj1")
+
+[node name="hitSound" type="AudioStreamPlayer" parent="ghitbox"]
+stream = ExtResource("10_wvmuv")
+
+[node name="death" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="area_entered" from="ghitbox" to="ghitbox" method="_on_area_entered"]
+[connection signal="timeout" from="ghitbox/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="ghitbox/punctimer" to="." method="_on_punctimer_timeout"]
+[connection signal="timeout" from="death" to="." method="_on_death_timeout"]

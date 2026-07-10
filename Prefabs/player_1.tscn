@@ -1,0 +1,103 @@
+[gd_scene load_steps=10 format=3 uid="uid://dhvthbxp58i2"]
+
+[ext_resource type="Script" path="res://Scripts/player/player_1.gd" id="1_dg67v"]
+[ext_resource type="Texture2D" uid="uid://dfnhlaihdj33t" path="res://Assets/Images/Deciro/Deciro_Spritesheet.png" id="1_egqsa"]
+[ext_resource type="AudioStream" uid="uid://3riqi87els61" path="res://Assets/Sounds/Binersashoot.wav" id="3_jpumu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6kgny"]
+size = Vector2(9, 44)
+
+[sub_resource type="Animation" id="Animation_1bm6b"]
+resource_name = "Idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_kio0t"]
+resource_name = "Run"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 1]
+}
+
+[sub_resource type="Animation" id="Animation_613c8"]
+resource_name = "Shoot"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l8xok"]
+_data = {
+"Idle": SubResource("Animation_1bm6b"),
+"Run": SubResource("Animation_kio0t"),
+"Shoot": SubResource("Animation_613c8")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_35uaf"]
+size = Vector2(14, 57.6667)
+
+[node name="player1" type="CharacterBody2D"]
+position = Vector2(0, -1)
+scale = Vector2(3, 3)
+script = ExtResource("1_dg67v")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_egqsa")
+hframes = 2
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-29.5, -6)
+shape = SubResource("RectangleShape2D_6kgny")
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(-6.66667, -23.3333)
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_l8xok")
+}
+
+[node name="phitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="phitbox"]
+position = Vector2(-30, -9.16667)
+shape = SubResource("RectangleShape2D_35uaf")
+
+[node name="iframe" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="shootSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_jpumu")
+
+[connection signal="area_entered" from="phitbox" to="." method="_on_phitbox_area_entered"]
+[connection signal="timeout" from="iframe" to="." method="_on_iframe_timeout"]

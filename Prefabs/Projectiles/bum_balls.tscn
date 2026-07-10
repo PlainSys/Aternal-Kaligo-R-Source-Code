@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://bc30eaton545y"]
+
+[ext_resource type="Texture2D" uid="uid://dghgyh0iiih3s" path="res://Assets/Images/Bumball1.png" id="1_mh3qc"]
+[ext_resource type="Script" path="res://Prefabs/Projectiles/bum_balls.gd" id="1_ugs67"]
+[ext_resource type="Texture2D" uid="uid://cn87yixxaqnmv" path="res://Assets/Images/Bumball2.png" id="2_fuenu"]
+[ext_resource type="Texture2D" uid="uid://dp4yj5it7f4db" path="res://Assets/Images/Bumball3.png" id="3_smm3q"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4gu6f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_mh3qc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_fuenu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_smm3q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k5unb"]
+size = Vector2(13, 14)
+
+[node name="bumBalls" type="Area2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_ugs67")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_4gu6f")
+autoplay = "default"
+frame_progress = 0.833336
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_k5unb")
+debug_color = Color(0.670588, 0, 0.0784314, 0.419608)
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

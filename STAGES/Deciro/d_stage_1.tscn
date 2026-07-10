@@ -1,0 +1,174 @@
+[gd_scene load_steps=19 format=3 uid="uid://ssmf8bqcqmsr"]
+
+[ext_resource type="Script" path="res://STAGES/Deciro/d_stage_1.gd" id="1_5cvti"]
+[ext_resource type="Texture2D" uid="uid://c0xf8mlfudxru" path="res://Assets/tiles/floor.png" id="1_bq2ns"]
+[ext_resource type="Texture2D" uid="uid://d8dfrgpiujin" path="res://Assets/Images/StageArt/Stage1D/buildings0001.png" id="2_de3kq"]
+[ext_resource type="Texture2D" uid="uid://puoy6sn77siv" path="res://Assets/Images/StageArt/Stage1D/buildings0002.png" id="3_r2w4n"]
+[ext_resource type="Texture2D" uid="uid://djdphatj3r5l4" path="res://Assets/Images/StageArt/Stage1D/buildings0003.png" id="4_5buwn"]
+[ext_resource type="Texture2D" uid="uid://bunlildt1d348" path="res://Assets/Images/StageArt/Stage1D/buildings0004.png" id="5_bb7l7"]
+[ext_resource type="AudioStream" uid="uid://dtt73vbeopg7n" path="res://Assets/Music/S_3.wav" id="7_caroy"]
+[ext_resource type="Texture2D" uid="uid://dc3r76cor5olg" path="res://Assets/Images/StageArt/Stage1D/newtrainlol.png" id="7_fojkk"]
+[ext_resource type="PackedScene" uid="uid://dhvthbxp58i2" path="res://Prefabs/player_1.tscn" id="8_a2chq"]
+[ext_resource type="Script" path="res://Scripts/timer.gd" id="9_gqu05"]
+[ext_resource type="FontFile" uid="uid://ce678qpmiwlse" path="res://Assets/Fonts/pixeled/Pixeled.ttf" id="10_ejri1"]
+[ext_resource type="PackedScene" uid="uid://bv5o33ptkeh2x" path="res://Prefabs/Enemy/grunt.tscn" id="11_bkyhw"]
+[ext_resource type="PackedScene" uid="uid://7rnudj7xqhhl" path="res://STAGES/stage_intro.tscn" id="13_fs3eq"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w876a"]
+texture = ExtResource("1_bq2ns")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_1e5d2"]
+sources/0 = SubResource("TileSetAtlasSource_w876a")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8sbk1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_de3kq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_r2w4n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_5buwn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_bb7l7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4t6as"]
+size = Vector2(1267, 78)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q80ry"]
+size = Vector2(18, 731)
+
+[node name="D_Stage1" type="Node2D"]
+script = ExtResource("1_5cvti")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_1e5d2")
+cell_quadrant_size = 62
+format = 2
+
+[node name="Skybox" type="ColorRect" parent="."]
+offset_left = -257.0
+offset_right = 1483.0
+offset_bottom = 257.0
+color = Color(0.564706, 0, 0.0862745, 1)
+
+[node name="Buildings" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(579, 272)
+scale = Vector2(5.36, 5.36)
+sprite_frames = SubResource("SpriteFrames_8sbk1")
+autoplay = "default"
+frame_progress = 0.212308
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(578.778, 318)
+scale = Vector2(7.4, 7.4)
+texture = ExtResource("7_fojkk")
+
+[node name="Theme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_caroy")
+autoplay = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(602.5, 726)
+shape = SubResource("RectangleShape2D_4t6as")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(586, 226)
+shape = SubResource("RectangleShape2D_4t6as")
+
+[node name="player" parent="." instance=ExtResource("8_a2chq")]
+position = Vector2(659, 456)
+
+[node name="timer" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("9_gqu05")
+
+[node name="CD" type="Label" parent="timer"]
+layout_mode = 0
+offset_left = 552.0
+offset_top = 23.0
+offset_right = 592.0
+offset_bottom = 82.0
+theme_override_colors/font_color = Color(1, 0.980392, 0.666667, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("10_ejri1")
+theme_override_font_sizes/font_size = 30
+text = "10"
+
+[node name="countdown" type="Timer" parent="timer"]
+autostart = true
+
+[node name="LineEdit" type="LineEdit" parent="timer"]
+layout_mode = 0
+offset_top = -92.0
+offset_right = 67.0625
+offset_bottom = -61.0
+text = "res://STAGES/Deciro/d_stage_1_dialog.tscn"
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(-48, 355.5)
+shape = SubResource("RectangleShape2D_q80ry")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+position = Vector2(1208, 386)
+shape = SubResource("RectangleShape2D_q80ry")
+
+[node name="Grunt" parent="." instance=ExtResource("11_bkyhw")]
+position = Vector2(177, 415)
+
+[node name="EnemyPos" type="Node" parent="."]
+
+[node name="Position2D" type="Marker2D" parent="EnemyPos" groups=["spawn"]]
+position = Vector2(0, 331)
+
+[node name="Position2D2" type="Marker2D" parent="EnemyPos" groups=["spawn"]]
+position = Vector2(67, 415)
+
+[node name="Position2D3" type="Marker2D" parent="EnemyPos" groups=["spawn"]]
+position = Vector2(18, 565)
+
+[node name="Position2D4" type="Marker2D" parent="EnemyPos" groups=["spawn"]]
+position = Vector2(114, 429)
+
+[node name="Position2D5" type="Marker2D" parent="EnemyPos" groups=["spawn"]]
+position = Vector2(883, 415)
+
+[node name="Position2D6" type="Marker2D" parent="EnemyPos" groups=["spawn"]]
+position = Vector2(1046, 370)
+
+[node name="Position2D7" type="Marker2D" parent="EnemyPos" groups=["spawn"]]
+position = Vector2(1046, 606)
+
+[node name="Enemy" type="Timer" parent="."]
+autostart = true
+
+[node name="Spawn" type="Node2D" parent="."]
+position = Vector2(93, 540)
+
+[node name="StageIntro" parent="." instance=ExtResource("13_fs3eq")]
+
+[connection signal="timeout" from="timer/countdown" to="timer" method="_on_countdown_timeout"]
+[connection signal="timeout" from="Enemy" to="." method="_on_enemy_timeout"]

@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://docxerpbfb61b"]
+
+[ext_resource type="Texture2D" uid="uid://cn3b0dbicuqmd" path="res://Assets/Images/Enemies/Billy/Billy1.png" id="1_brvgc"]
+[ext_resource type="Script" path="res://Scripts/billy.gd" id="1_quajr"]
+[ext_resource type="Texture2D" uid="uid://bapq5hxd2t7s4" path="res://Assets/Images/Enemies/Billy/Billy2.png" id="2_mk7ig"]
+[ext_resource type="Texture2D" uid="uid://cdg1ejvm2a1ut" path="res://Assets/Images/Effects/explo2.png" id="2_tvkxt"]
+[ext_resource type="Script" path="res://Scripts/Bhitbox.gd" id="4_bqxyx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m25ny"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_tvkxt")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_brvgc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_mk7ig")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qjml4"]
+size = Vector2(9, 42)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6fd35"]
+size = Vector2(42, 38)
+
+[node name="Billy" type="CharacterBody2D"]
+script = ExtResource("1_quajr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_m25ny")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 2)
+shape = SubResource("RectangleShape2D_qjml4")
+
+[node name="Bhitbox" type="Area2D" parent="." groups=["damage"]]
+script = ExtResource("4_bqxyx")
+setscore = 150
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bhitbox"]
+position = Vector2(-14, 2)
+shape = SubResource("RectangleShape2D_6fd35")
+debug_color = Color(0.760784, 0, 0.152941, 0.419608)
+
+[node name="Timer" type="Timer" parent="Bhitbox"]
+wait_time = 0.1
+
+[node name="death" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="area_entered" from="Bhitbox" to="Bhitbox" method="_on_area_entered"]
+[connection signal="timeout" from="Bhitbox/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="death" to="." method="_on_death_timeout"]

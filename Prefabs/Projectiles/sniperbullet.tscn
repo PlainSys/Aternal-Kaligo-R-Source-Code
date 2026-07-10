@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cov01xo56oikf"]
+
+[ext_resource type="Texture2D" uid="uid://dr6f27rn4b1b3" path="res://Assets/Images/Hazards/sniperbullet.png" id="1_ae4qi"]
+[ext_resource type="Script" path="res://Prefabs/Projectiles/sniperbullet.gd" id="1_lq4gs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tvvij"]
+size = Vector2(325, 49)
+
+[node name="sniperbullet" type="Area2D"]
+scale = Vector2(0.2, 0.2)
+script = ExtResource("1_lq4gs")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ae4qi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-14.5, -2.5)
+shape = SubResource("RectangleShape2D_tvvij")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-1.00001, 0.5)
+scale = Vector2(21.7, 7.05)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

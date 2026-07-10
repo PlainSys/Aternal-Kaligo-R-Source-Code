@@ -1,0 +1,233 @@
+[gd_scene load_steps=12 format=3 uid="uid://berwnemqrt3o2"]
+
+[ext_resource type="Script" path="res://STAGES/Deciro/d_stage_6_dialog.gd" id="1_sadfv"]
+[ext_resource type="Texture2D" uid="uid://3uhbh6lpf6at" path="res://Assets/Images/StageArt/skybox1.png" id="2_2k0w4"]
+[ext_resource type="Texture2D" uid="uid://dfnhlaihdj33t" path="res://Assets/Images/Deciro/Deciro_Spritesheet.png" id="2_ibocd"]
+[ext_resource type="Texture2D" uid="uid://cvyx1xhiiwuha" path="res://Assets/Images/Boss/Bum/Bum1.png" id="3_mkomy"]
+[ext_resource type="TileSet" uid="uid://b8kc14ov1y3x2" path="res://TILES.tres" id="5_jpkqe"]
+[ext_resource type="PackedScene" uid="uid://draj7u8xoffqn" path="res://Prefabs/dialog.tscn" id="6_fee1e"]
+[ext_resource type="FontFile" uid="uid://ce678qpmiwlse" path="res://Assets/Fonts/pixeled/Pixeled.ttf" id="7_iqedk"]
+[ext_resource type="Texture2D" uid="uid://c06muy1asbkpu" path="res://Assets/Images/Deciro/Portraits/Phastt0011.png" id="8_dmieq"]
+[ext_resource type="Texture2D" uid="uid://d3vwi4vp3xmfk" path="res://Assets/Images/Deciro/Portraits/Phastt0012.png" id="9_up1l5"]
+[ext_resource type="Texture2D" uid="uid://dbrvoins4kkpq" path="res://Assets/Images/Boss/Bum/portrait.png" id="10_yxnx8"]
+[ext_resource type="AudioStream" uid="uid://dc7s8q5pdj2ba" path="res://Assets/Music/S_4.wav" id="11_xp1un"]
+
+[node name="d_stage_6_boss" type="Node2D"]
+script = ExtResource("1_sadfv")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.6, 0.305882, 0.305882, 1)
+offset_left = -134.0
+offset_top = -748.0
+offset_right = 1283.0
+offset_bottom = 1185.0
+texture = ExtResource("2_2k0w4")
+expand_mode = 1
+
+[node name="Deciro" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(150, 384)
+scale = Vector2(3, 3)
+texture = ExtResource("2_ibocd")
+hframes = 2
+vframes = 2
+
+[node name="Bum" type="Sprite2D" parent="."]
+position = Vector2(1076, 357)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_mkomy")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("5_jpkqe")
+format = 2
+layer_0/tile_data = PackedInt32Array(458752, 22, 0, 458753, 22, 0, 458754, 22, 0, 458755, 22, 0, 458756, 22, 0, 458757, 22, 0, 458758, 22, 0, 458759, 22, 0, 458760, 22, 0, 458761, 22, 0, 458762, 22, 0, 458763, 22, 0, 458764, 22, 0, 458765, 22, 0, 458766, 22, 0, 458767, 22, 0, 458768, 22, 0, 458769, 22, 0, 458770, 22, 0, 524306, 22, 0, 524305, 22, 0, 589841, 22, 0, 589840, 22, 0, 589839, 22, 0, 589838, 22, 0, 589837, 22, 0, 589836, 22, 0, 589835, 22, 0, 589834, 22, 0, 589833, 22, 0, 589832, 22, 0, 589831, 22, 0, 589830, 22, 0, 589829, 22, 0, 589828, 22, 0, 589827, 22, 0, 589826, 22, 0, 589825, 22, 0, 589824, 22, 0, 655359, 22, 0, 589823, 22, 0, 524287, 22, 0, 524288, 22, 0, 524289, 22, 0, 524290, 22, 0, 524291, 22, 0, 524292, 22, 0, 524293, 22, 0, 524294, 22, 0, 524295, 22, 0, 524296, 22, 0, 524297, 22, 0, 524298, 22, 0, 524299, 22, 0, 524300, 22, 0, 524301, 22, 0, 524302, 22, 0, 524303, 22, 0, 524304, 22, 0, 589842, 22, 0, 720895, 22, 0, 655360, 22, 0, 655361, 22, 0, 655362, 22, 0, 655363, 22, 0, 655364, 22, 0, 655365, 22, 0, 655366, 22, 0, 655367, 22, 0, 655368, 22, 0, 655369, 22, 0, 655370, 22, 0, 655371, 22, 0, 655372, 22, 0, 655373, 22, 0, 655374, 22, 0, 655375, 22, 0, 655376, 22, 0, 655377, 22, 0, 655378, 22, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="dialog" parent="CanvasLayer" instance=ExtResource("6_fee1e")]
+
+[node name="dia1" type="Label" parent="CanvasLayer/dialog"]
+layout_mode = 0
+offset_left = 443.0
+offset_top = 474.0
+offset_right = 828.0
+offset_bottom = 572.0
+theme_override_fonts/font = ExtResource("7_iqedk")
+text = "Deciro: ITS OVER BUM, THERES
+NO WHERE LEFT TO RUN!"
+
+[node name="dia2" type="Label" parent="CanvasLayer/dialog"]
+visible = false
+layout_mode = 0
+offset_left = 443.0
+offset_top = 474.0
+offset_right = 828.0
+offset_bottom = 572.0
+theme_override_fonts/font = ExtResource("7_iqedk")
+text = "Bumathule: Dude... literally look up."
+
+[node name="dia3" type="Label" parent="CanvasLayer/dialog"]
+visible = false
+layout_mode = 0
+offset_left = 443.0
+offset_top = 474.0
+offset_right = 828.0
+offset_bottom = 572.0
+theme_override_fonts/font = ExtResource("7_iqedk")
+text = "Deciro and Yellow: ... shit."
+
+[node name="dia4" type="Label" parent="CanvasLayer/dialog"]
+visible = false
+layout_mode = 0
+offset_left = 443.0
+offset_top = 474.0
+offset_right = 828.0
+offset_bottom = 572.0
+theme_override_fonts/font = ExtResource("7_iqedk")
+text = "Bumathule: Yeah... those electric
+balls will rain all over and safe to
+say... you're not surviving."
+
+[node name="dia5" type="Label" parent="CanvasLayer/dialog"]
+visible = false
+layout_mode = 0
+offset_left = 443.0
+offset_top = 474.0
+offset_right = 828.0
+offset_bottom = 572.0
+theme_override_fonts/font = ExtResource("7_iqedk")
+text = "Yellow: Oh yeah? We can still take
+you down, les go Deciro!!!"
+
+[node name="dia6" type="Label" parent="CanvasLayer/dialog"]
+visible = false
+layout_mode = 0
+offset_left = 443.0
+offset_top = 474.0
+offset_right = 828.0
+offset_bottom = 572.0
+theme_override_fonts/font = ExtResource("7_iqedk")
+text = "Deciro: As soon as we're done 
+with you, we'll take that dream
+box and-"
+
+[node name="dia7" type="Label" parent="CanvasLayer/dialog"]
+visible = false
+layout_mode = 0
+offset_left = 443.0
+offset_top = 474.0
+offset_right = 828.0
+offset_bottom = 572.0
+theme_override_fonts/font = ExtResource("7_iqedk")
+text = "Bumathule: This place is going to
+explode in approxamietly 10
+minutes."
+
+[node name="dia8" type="Label" parent="CanvasLayer/dialog"]
+visible = false
+layout_mode = 0
+offset_left = 443.0
+offset_top = 474.0
+offset_right = 828.0
+offset_bottom = 572.0
+theme_override_fonts/font = ExtResource("7_iqedk")
+text = "Yellow: SHIT!!!
+Deciro: OH YOU HAVE GOT TO BE
+JOKING!"
+
+[node name="dia9" type="Label" parent="CanvasLayer/dialog"]
+visible = false
+layout_mode = 0
+offset_left = 443.0
+offset_top = 474.0
+offset_right = 828.0
+offset_bottom = 572.0
+theme_override_fonts/font = ExtResource("7_iqedk")
+text = "Bumathule: I already instructed
+all my troops to evacute. Its
+just me and you."
+
+[node name="dia10" type="Label" parent="CanvasLayer/dialog"]
+visible = false
+layout_mode = 0
+offset_left = 443.0
+offset_top = 474.0
+offset_right = 828.0
+offset_bottom = 572.0
+theme_override_fonts/font = ExtResource("7_iqedk")
+text = "Yellow: Yeah whatever, beat
+his ass! "
+
+[node name="Deciro1" type="TextureRect" parent="CanvasLayer/dialog"]
+layout_mode = 0
+offset_left = 172.0
+offset_top = 382.0
+offset_right = 602.0
+offset_bottom = 695.0
+texture = ExtResource("8_dmieq")
+expand_mode = 2
+
+[node name="Deciro2" type="TextureRect" parent="CanvasLayer/dialog"]
+visible = false
+layout_mode = 0
+offset_left = 172.0
+offset_top = 382.0
+offset_right = 602.0
+offset_bottom = 695.0
+texture = ExtResource("9_up1l5")
+expand_mode = 2
+
+[node name="Bum" type="TextureRect" parent="CanvasLayer/dialog"]
+visible = false
+layout_mode = 0
+offset_left = 228.0
+offset_top = 361.0
+offset_right = 428.0
+offset_bottom = 715.0
+texture = ExtResource("10_yxnx8")
+expand_mode = 1
+
+[node name="dialog1" type="Timer" parent="."]
+wait_time = 4.0
+autostart = true
+
+[node name="dialog2" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="dialog3" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="dialog4" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="dialog5" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="dialog6" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="dialog7" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="dialog8" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="dialog9" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="dialog10" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="theme2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_xp1un")
+
+[connection signal="timeout" from="dialog1" to="." method="_on_dialog_1_timeout"]
+[connection signal="timeout" from="dialog2" to="." method="_on_dialog_2_timeout"]
+[connection signal="timeout" from="dialog3" to="." method="_on_dialog_3_timeout"]
+[connection signal="timeout" from="dialog4" to="." method="_on_dialog_4_timeout"]
+[connection signal="timeout" from="dialog5" to="." method="_on_dialog_5_timeout"]
+[connection signal="timeout" from="dialog6" to="." method="_on_dialog_6_timeout"]
+[connection signal="timeout" from="dialog7" to="." method="_on_dialog_7_timeout"]
+[connection signal="timeout" from="dialog8" to="." method="_on_dialog_8_timeout"]
+[connection signal="timeout" from="dialog9" to="." method="_on_dialog_9_timeout"]
+[connection signal="timeout" from="dialog10" to="." method="_on_dialog_10_timeout"]

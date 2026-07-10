@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://ctm86fm48ak6y"]
+
+[ext_resource type="Script" path="res://STAGES/lazo_true_ending.gd" id="1_pyk6r"]
+[ext_resource type="Texture2D" uid="uid://dfnkelah3poyg" path="res://Assets/endings/rnormalending1.png" id="2_t3hvx"]
+[ext_resource type="Texture2D" uid="uid://cp1qt57ehrxex" path="res://Assets/endings/rnormalending2.png" id="3_awfyy"]
+[ext_resource type="Texture2D" uid="uid://bm1qjk6bpjumh" path="res://Assets/endings/rnormalending3.png" id="4_5yskc"]
+
+[node name="DeciroBadEnding" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pyk6r")
+
+[node name="Ending1" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1156.0
+offset_bottom = 659.0
+texture = ExtResource("2_t3hvx")
+expand_mode = 1
+
+[node name="Ending2" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 1156.0
+offset_bottom = 659.0
+texture = ExtResource("3_awfyy")
+expand_mode = 1
+
+[node name="Ending3" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 1156.0
+offset_bottom = 659.0
+texture = ExtResource("4_5yskc")
+expand_mode = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 6.0
+autostart = true
+
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 5.5
+
+[node name="Timer3" type="Timer" parent="."]
+wait_time = 5.5
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
+[connection signal="timeout" from="Timer3" to="." method="_on_timer_3_timeout"]

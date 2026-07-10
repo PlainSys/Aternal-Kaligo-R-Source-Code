@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://xr61krqfps7x"]
+
+[ext_resource type="Script" path="res://Prefabs/table.gd" id="1_gq2pm"]
+[ext_resource type="Texture2D" uid="uid://dyvbwehf7qblj" path="res://Assets/Images/table.png" id="1_sep4f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3752c"]
+size = Vector2(27, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_242ml"]
+size = Vector2(33, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5x162"]
+size = Vector2(49, 32)
+
+[node name="Table" type="CharacterBody2D"]
+texture_filter = 2
+script = ExtResource("1_gq2pm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_sep4f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 2)
+shape = SubResource("RectangleShape2D_3752c")
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_242ml")
+debug_color = Color(0.647059, 0, 0.207843, 0.419608)
+
+[node name="die" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="die"]
+position = Vector2(-1.5, -3)
+shape = SubResource("RectangleShape2D_5x162")
+disabled = true
+debug_color = Color(0, 0.501961, 0.243137, 0.419608)
+
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="area_entered" from="die" to="." method="_on_die_area_entered"]

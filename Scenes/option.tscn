@@ -1,0 +1,126 @@
+[gd_scene load_steps=4 format=3 uid="uid://cy8a4rau2pctw"]
+
+[ext_resource type="FontFile" uid="uid://ce678qpmiwlse" path="res://Assets/Fonts/pixeled/Pixeled.ttf" id="1_c22ge"]
+[ext_resource type="Script" path="res://Scenes/option.gd" id="1_thtr2"]
+[ext_resource type="Texture2D" uid="uid://di0745gbka7w3" path="res://Assets/Images/Deciro menu.png" id="3_58meg"]
+
+[node name="Option" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_thtr2")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0.196078, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -848.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.34902, 0, 0.0588235, 1)
+
+[node name="fullscreen" type="Button" parent="."]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 111.0
+offset_right = 238.0
+offset_bottom = 165.0
+theme_override_fonts/font = ExtResource("1_c22ge")
+text = "Fullscreen"
+
+[node name="Lives" type="Button" parent="."]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 194.0
+offset_right = 241.0
+offset_bottom = 248.0
+theme_override_fonts/font = ExtResource("1_c22ge")
+text = "Lives: 2
+"
+
+[node name="diff" type="Button" parent="."]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 273.0
+offset_right = 272.0
+offset_bottom = 327.0
+theme_override_fonts/font = ExtResource("1_c22ge")
+text = "Difficulty: Normal"
+
+[node name="annoucer" type="Button" parent="."]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 351.0
+offset_right = 242.0
+offset_bottom = 387.0
+theme_override_fonts/font = ExtResource("1_c22ge")
+theme_override_font_sizes/font_size = 10
+text = "Toggle Annoucer (ON)"
+
+[node name="MasterControl" type="Button" parent="."]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 411.0
+offset_right = 249.0
+offset_bottom = 447.0
+theme_override_fonts/font = ExtResource("1_c22ge")
+theme_override_font_sizes/font_size = 10
+text = "Enable Master Control"
+
+[node name="Lives5" type="Button" parent="."]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 467.0
+offset_right = 271.0
+offset_bottom = 521.0
+theme_override_fonts/font = ExtResource("1_c22ge")
+text = "Stage Select"
+
+[node name="back" type="Button" parent="."]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 557.0
+offset_right = 242.0
+offset_bottom = 611.0
+theme_override_fonts/font = ExtResource("1_c22ge")
+text = "Back"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.52549)
+texture_filter = 1
+layout_mode = 0
+offset_left = 794.0
+offset_top = 104.0
+offset_right = 1024.0
+offset_bottom = 658.0
+texture = ExtResource("3_58meg")
+
+[node name="Notice" type="Label" parent="."]
+layout_mode = 0
+offset_left = 360.0
+offset_top = 599.0
+offset_right = 1253.0
+offset_bottom = 648.0
+theme_override_fonts/font = ExtResource("1_c22ge")
+theme_override_font_sizes/font_size = 13
+text = "Only unlocked when 1ccing either Deciro or Remed route on Berzerk"
+
+[connection signal="pressed" from="fullscreen" to="." method="_on_fullscreen_pressed"]
+[connection signal="pressed" from="Lives" to="." method="_on_lives_pressed"]
+[connection signal="pressed" from="diff" to="." method="_on_diff_pressed"]
+[connection signal="pressed" from="annoucer" to="." method="_on_annoucer_pressed"]
+[connection signal="pressed" from="MasterControl" to="." method="_on_master_control_pressed"]
+[connection signal="pressed" from="back" to="." method="_on_back_pressed"]

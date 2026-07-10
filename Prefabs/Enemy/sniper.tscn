@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://mpbde8uqu68l"]
+
+[ext_resource type="Texture2D" uid="uid://btolh6yx82hoq" path="res://Assets/Images/Enemies/sniper.png" id="1_a7y3d"]
+[ext_resource type="Script" path="res://Prefabs/Enemy/sniper.gd" id="1_vx05j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i13lf"]
+size = Vector2(22, 98)
+
+[node name="Sniper" type="Area2D"]
+scale = Vector2(0.4, 0.4)
+script = ExtResource("1_vx05j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_a7y3d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-56, 1)
+shape = SubResource("RectangleShape2D_i13lf")
+
+[node name="cooldown" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="FiringPosition" type="Node2D" parent="."]
+
+[node name="gun" type="Node2D" parent="FiringPosition"]
+position = Vector2(120, 0)

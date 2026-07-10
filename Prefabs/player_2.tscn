@@ -1,0 +1,114 @@
+[gd_scene load_steps=10 format=3 uid="uid://cr2kcp1i1bqbj"]
+
+[ext_resource type="Script" path="res://Scripts/player/player_2.gd" id="1_5idiq"]
+[ext_resource type="Texture2D" uid="uid://cm403xhdnqsj3" path="res://Assets/Images/Remed/Remed_Spritesheet.png" id="1_80xjj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lf2cg"]
+size = Vector2(3, 45)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yp37w"]
+size = Vector2(7, 50)
+
+[sub_resource type="Animation" id="Animation_6ip8r"]
+resource_name = "attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_xfwdl"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_1ebff"]
+resource_name = "run"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ptjb2"]
+_data = {
+"attack": SubResource("Animation_6ip8r"),
+"idle": SubResource("Animation_xfwdl"),
+"run": SubResource("Animation_1ebff")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_84vlh"]
+size = Vector2(63, 41.6667)
+
+[node name="player_2" type="CharacterBody2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_5idiq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_80xjj")
+hframes = 3
+vframes = 2
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 0.499999)
+shape = SubResource("RectangleShape2D_lf2cg")
+
+[node name="rhitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rhitbox"]
+position = Vector2(-1.5, 1)
+shape = SubResource("RectangleShape2D_yp37w")
+debug_color = Color(0.737255, 0.00784314, 0, 0.419608)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ptjb2")
+}
+
+[node name="Muzzle" type="Marker2D" parent="."]
+
+[node name="sword1" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sword1"]
+position = Vector2(-2.5, -3.5)
+shape = SubResource("RectangleShape2D_84vlh")
+disabled = true
+
+[node name="cooldown" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="iframe" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="area_entered" from="rhitbox" to="." method="_on_rhitbox_area_entered"]
+[connection signal="area_entered" from="sword1" to="." method="_on_sword_1_area_entered"]
+[connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]
+[connection signal="timeout" from="iframe" to="." method="_on_iframe_timeout"]

@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://bvv4ghnpt7ovk"]
+
+[ext_resource type="Texture2D" uid="uid://cxv15u1wsjf3e" path="res://Assets/Images/Effects/bloodsplash.png" id="1_ig0fw"]
+[ext_resource type="Script" path="res://Scripts/greko.gd" id="1_u6p58"]
+[ext_resource type="Texture2D" uid="uid://dsxw0kfui2w1n" path="res://Assets/Images/Enemies/Greko/Greko1.png" id="2_s8po1"]
+[ext_resource type="Texture2D" uid="uid://be3tdeo2ngqg5" path="res://Assets/Images/Enemies/Greko/Greko2.png" id="3_b7n12"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_njh5m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ig0fw")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_s8po1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_b7n12")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ssbk"]
+size = Vector2(89, 31)
+
+[node name="Greko" type="Area2D" groups=["damage"]]
+script = ExtResource("1_u6p58")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_njh5m")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-31.5, 1.5)
+shape = SubResource("RectangleShape2D_8ssbk")
+
+[node name="death" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="timeout" from="death" to="." method="_on_death_timeout"]

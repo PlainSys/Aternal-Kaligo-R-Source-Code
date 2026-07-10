@@ -1,0 +1,210 @@
+[gd_scene load_steps=13 format=3 uid="uid://gm1ngwh8kino"]
+
+[ext_resource type="Script" path="res://STAGES/Deciro/d_stage_4_dialog.gd" id="1_iou2l"]
+[ext_resource type="TileSet" uid="uid://b8kc14ov1y3x2" path="res://TILES.tres" id="2_r721n"]
+[ext_resource type="Texture2D" uid="uid://dfnhlaihdj33t" path="res://Assets/Images/Deciro/Deciro_Spritesheet.png" id="3_7yyjl"]
+[ext_resource type="PackedScene" uid="uid://k76s3tqh4h2d" path="res://Prefabs/door_1.tscn" id="3_mf1fp"]
+[ext_resource type="PackedScene" uid="uid://draj7u8xoffqn" path="res://Prefabs/dialog.tscn" id="5_me6oy"]
+[ext_resource type="FontFile" uid="uid://ce678qpmiwlse" path="res://Assets/Fonts/pixeled/Pixeled.ttf" id="6_lriv2"]
+[ext_resource type="Texture2D" uid="uid://c5fmng1xtxxws" path="res://Assets/Images/Deciro/Portraits/Phastt0010.png" id="7_0fm30"]
+[ext_resource type="Texture2D" uid="uid://b8qsxpl5ouaag" path="res://Assets/Images/Boss/Lena/lena1.png" id="8_d1lpw"]
+[ext_resource type="Texture2D" uid="uid://cu10hg2buq6lk" path="res://Assets/Images/Deciro/Portraits/Phastt0013.png" id="8_gvb7k"]
+[ext_resource type="Texture2D" uid="uid://d3vwi4vp3xmfk" path="res://Assets/Images/Deciro/Portraits/Phastt0012.png" id="9_u8lp6"]
+[ext_resource type="Texture2D" uid="uid://no740hs862md" path="res://Assets/Images/Boss/Lena/portrait.png" id="10_xlh0p"]
+[ext_resource type="AudioStream" uid="uid://dc7s8q5pdj2ba" path="res://Assets/Music/S_4.wav" id="12_alhwf"]
+
+[node name="d_stage4_boss" type="Node2D"]
+script = ExtResource("1_iou2l")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("2_r721n")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 10, 0, 65536, 10, 0, 131072, 10, 0, 196608, 10, 0, 1, 10, 0, 2, 10, 0, 3, 10, 0, 4, 10, 0, 5, 10, 0, 6, 10, 0, 7, 10, 0, 8, 10, 0, 9, 10, 0, 10, 10, 0, 11, 10, 0, 12, 10, 0, 13, 10, 0, 14, 10, 0, 15, 10, 0, 16, 10, 0, 17, 10, 0, 65553, 10, 0, 131089, 10, 0, 196625, 10, 0, 458769, 10, 0, 524305, 10, 0, 589841, 10, 0, 655377, 10, 0, 655376, 10, 0, 589824, 10, 0, 458752, 10, 0, 524288, 10, 0, 655360, 10, 0, 655361, 10, 0, 655362, 10, 0, 655363, 10, 0, 655364, 10, 0, 655365, 10, 0, 655366, 10, 0, 655367, 10, 0, 655368, 10, 0, 655369, 10, 0, 655370, 10, 0, 655371, 10, 0, 655372, 10, 0, 655375, 10, 0, 655374, 10, 0, 655373, 10, 0, 65537, 15, 0, 131073, 15, 0, 196609, 15, 0, 262145, 15, 0, 327681, 15, 0, 393217, 15, 0, 458753, 15, 0, 524289, 15, 0, 589825, 15, 0, 65538, 15, 0, 131074, 15, 0, 196610, 15, 0, 262146, 15, 0, 327682, 15, 0, 393218, 15, 0, 458754, 15, 0, 524290, 15, 0, 589826, 15, 0, 65539, 15, 0, 131075, 15, 0, 196611, 15, 0, 262147, 15, 0, 327683, 15, 0, 393219, 15, 0, 458755, 15, 0, 524291, 15, 0, 589827, 15, 0, 65540, 15, 0, 131076, 15, 0, 196612, 15, 0, 262148, 15, 0, 327684, 15, 0, 393220, 15, 0, 458756, 15, 0, 524292, 15, 0, 589828, 15, 0, 65541, 15, 0, 131077, 15, 0, 196613, 15, 0, 262149, 15, 0, 327685, 15, 0, 393221, 15, 0, 458757, 15, 0, 524293, 15, 0, 589829, 15, 0, 65542, 15, 0, 131078, 15, 0, 196614, 15, 0, 262150, 15, 0, 327686, 15, 0, 393222, 15, 0, 458758, 15, 0, 524294, 15, 0, 589830, 15, 0, 65543, 15, 0, 131079, 15, 0, 196615, 15, 0, 262151, 15, 0, 327687, 15, 0, 393223, 15, 0, 458759, 15, 0, 524295, 15, 0, 589831, 15, 0, 65544, 15, 0, 131080, 15, 0, 196616, 15, 0, 262152, 15, 0, 327688, 15, 0, 393224, 15, 0, 458760, 15, 0, 524296, 15, 0, 589832, 15, 0, 65545, 15, 0, 131081, 15, 0, 196617, 15, 0, 262153, 15, 0, 327689, 15, 0, 393225, 15, 0, 458761, 15, 0, 524297, 15, 0, 589833, 15, 0, 65546, 15, 0, 131082, 15, 0, 196618, 15, 0, 262154, 15, 0, 327690, 15, 0, 393226, 15, 0, 458762, 15, 0, 524298, 15, 0, 589834, 15, 0, 65547, 15, 0, 131083, 15, 0, 196619, 15, 0, 262155, 15, 0, 327691, 15, 0, 393227, 15, 0, 458763, 15, 0, 524299, 15, 0, 589835, 15, 0, 65548, 15, 0, 131084, 15, 0, 196620, 15, 0, 262156, 15, 0, 327692, 15, 0, 393228, 15, 0, 458764, 15, 0, 524300, 15, 0, 589836, 15, 0, 65549, 15, 0, 131085, 15, 0, 196621, 15, 0, 262157, 15, 0, 327693, 15, 0, 393229, 15, 0, 458765, 15, 0, 524301, 15, 0, 589837, 15, 0, 65550, 15, 0, 131086, 15, 0, 196622, 15, 0, 262158, 15, 0, 327694, 15, 0, 393230, 15, 0, 458766, 15, 0, 524302, 15, 0, 589838, 15, 0, 65551, 15, 0, 131087, 15, 0, 196623, 15, 0, 262159, 15, 0, 327695, 15, 0, 393231, 15, 0, 458767, 15, 0, 524303, 15, 0, 589839, 15, 0, 65552, 15, 0, 131088, 15, 0, 196624, 15, 0, 262160, 15, 0, 327696, 15, 0, 393232, 15, 0, 458768, 15, 0, 524304, 15, 0, 589840, 15, 0, 393216, 15, 0, 327680, 15, 0, 262144, 15, 0, 262161, 15, 0, 327697, 15, 0, 393233, 15, 0)
+
+[node name="book1" type="TileMap" parent="."]
+tile_set = ExtResource("2_r721n")
+format = 2
+layer_0/tile_data = PackedInt32Array(65537, 18, 0, 65538, 18, 0, 65539, 18, 0, 65540, 18, 0, 65541, 18, 0, 65542, 18, 0, 65543, 18, 0, 65544, 18, 0, 65545, 18, 0, 65546, 18, 0, 65547, 18, 0, 65548, 18, 0, 65549, 18, 0, 65550, 18, 0, 65551, 18, 0, 65552, 18, 0, 196624, 20, 0, 131088, 20, 0, 458768, 20, 0, 524304, 20, 0, 589840, 19, 0, 589839, 19, 0, 589838, 19, 0, 589837, 19, 0, 589836, 19, 0, 589835, 19, 0, 589834, 19, 0, 589833, 19, 0, 589832, 19, 0, 589831, 19, 0, 589830, 19, 0, 589829, 19, 0, 589828, 19, 0, 589827, 19, 0, 589826, 19, 0, 589825, 19, 0, 196609, 17, 0, 131073, 17, 0, 524289, 17, 0, 458753, 17, 0)
+
+[node name="book2" type="TileMap" parent="."]
+tile_set = ExtResource("2_r721n")
+format = 2
+layer_0/tile_data = PackedInt32Array(589825, 17, 0, 65537, 17, 0, 589840, 20, 0, 65552, 20, 0)
+
+[node name="door1" parent="." instance=ExtResource("3_mf1fp")]
+position = Vector2(44, 255)
+rotation = 1.5708
+scale = Vector2(1.2, 1)
+
+[node name="door2" parent="." instance=ExtResource("3_mf1fp")]
+position = Vector2(1152, 255)
+rotation = 1.5708
+scale = Vector2(1.2, 1)
+
+[node name="Deciro" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(303, 385)
+scale = Vector2(3, 3)
+texture = ExtResource("3_7yyjl")
+hframes = 2
+vframes = 2
+
+[node name="Lena" type="Sprite2D" parent="."]
+position = Vector2(1045, 346)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_d1lpw")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="dialog" parent="CanvasLayer" instance=ExtResource("5_me6oy")]
+
+[node name="dia1" type="Label" parent="CanvasLayer/dialog"]
+layout_mode = 0
+offset_left = 443.0
+offset_top = 474.0
+offset_right = 834.0
+offset_bottom = 572.0
+theme_override_fonts/font = ExtResource("6_lriv2")
+text = "Yellow: God I hate books, they
+remind me of education."
+
+[node name="dia2" type="Label" parent="CanvasLayer/dialog"]
+visible = false
+layout_mode = 0
+offset_left = 443.0
+offset_top = 474.0
+offset_right = 834.0
+offset_bottom = 572.0
+theme_override_fonts/font = ExtResource("6_lriv2")
+text = "Lena: What do you expect from
+a libary?"
+
+[node name="dia3" type="Label" parent="CanvasLayer/dialog"]
+visible = false
+layout_mode = 0
+offset_left = 443.0
+offset_top = 474.0
+offset_right = 834.0
+offset_bottom = 572.0
+theme_override_fonts/font = ExtResource("6_lriv2")
+text = "Yellow: Yeah my point is, WHY DOES
+THIS FACILITY HAVE A LIBARY!?!"
+
+[node name="dia4" type="Label" parent="CanvasLayer/dialog"]
+visible = false
+layout_mode = 0
+offset_left = 443.0
+offset_top = 474.0
+offset_right = 834.0
+offset_bottom = 572.0
+theme_override_fonts/font = ExtResource("6_lriv2")
+text = "Lena: Because Mister Bumathule
+researches  the stuff he finds."
+
+[node name="dia5" type="Label" parent="CanvasLayer/dialog"]
+visible = false
+layout_mode = 0
+offset_left = 443.0
+offset_top = 474.0
+offset_right = 834.0
+offset_bottom = 572.0
+theme_override_fonts/font = ExtResource("6_lriv2")
+text = "Yellow: idiot couldve used google.
+Deciro: So umm... should we tell him
+that google is unreliable."
+
+[node name="dia6" type="Label" parent="CanvasLayer/dialog"]
+visible = false
+layout_mode = 0
+offset_left = 443.0
+offset_top = 474.0
+offset_right = 834.0
+offset_bottom = 572.0
+theme_override_fonts/font = ExtResource("6_lriv2")
+text = "Lena: Look, may I ask for the both
+of you to leave. Otherwise I will be
+forced to kill you."
+
+[node name="dia7" type="Label" parent="CanvasLayer/dialog"]
+visible = false
+layout_mode = 0
+offset_left = 443.0
+offset_top = 474.0
+offset_right = 834.0
+offset_bottom = 572.0
+theme_override_fonts/font = ExtResource("6_lriv2")
+text = "Yellow: Well... you guys are going
+to kill our best friend so no."
+
+[node name="Deciro1" type="TextureRect" parent="CanvasLayer/dialog"]
+layout_mode = 0
+offset_left = 175.0
+offset_top = 382.0
+offset_right = 605.0
+offset_bottom = 695.0
+texture = ExtResource("7_0fm30")
+expand_mode = 2
+
+[node name="Deciro2" type="TextureRect" parent="CanvasLayer/dialog"]
+visible = false
+layout_mode = 0
+offset_left = 175.0
+offset_top = 382.0
+offset_right = 605.0
+offset_bottom = 695.0
+texture = ExtResource("8_gvb7k")
+expand_mode = 2
+
+[node name="Deciro3" type="TextureRect" parent="CanvasLayer/dialog"]
+visible = false
+layout_mode = 0
+offset_left = 175.0
+offset_top = 382.0
+offset_right = 605.0
+offset_bottom = 695.0
+texture = ExtResource("9_u8lp6")
+expand_mode = 2
+
+[node name="Lena" type="TextureRect" parent="CanvasLayer/dialog"]
+visible = false
+layout_mode = 0
+offset_left = 106.0
+offset_top = 380.0
+offset_right = 653.0
+offset_bottom = 778.0
+texture = ExtResource("10_xlh0p")
+expand_mode = 2
+
+[node name="dialog1" type="Timer" parent="."]
+wait_time = 4.0
+autostart = true
+
+[node name="dialog2" type="Timer" parent="."]
+wait_time = 4.0
+
+[node name="dialog3" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="dialog4" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="dialog5" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="dialog6" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="dialog7" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="mixtape" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_alhwf")
+autoplay = true
+
+[connection signal="timeout" from="dialog1" to="." method="_on_dialog_1_timeout"]
+[connection signal="timeout" from="dialog2" to="." method="_on_dialog_2_timeout"]
+[connection signal="timeout" from="dialog3" to="." method="_on_dialog_3_timeout"]
+[connection signal="timeout" from="dialog4" to="." method="_on_dialog_4_timeout"]
+[connection signal="timeout" from="dialog5" to="." method="_on_dialog_5_timeout"]
+[connection signal="timeout" from="dialog6" to="." method="_on_dialog_6_timeout"]
+[connection signal="timeout" from="dialog7" to="." method="_on_dialog_7_timeout"]

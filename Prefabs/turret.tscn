@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bw0ybj1xgines"]
+
+[ext_resource type="Texture2D" uid="uid://bo34nkfnt86hx" path="res://Assets/Images/Hazards/turret.png" id="1_oix12"]
+[ext_resource type="Script" path="res://Scripts/turret.gd" id="1_q24my"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_apxml"]
+size = Vector2(7, 20)
+
+[node name="Turret" type="Area2D"]
+texture_filter = 1
+script = ExtResource("1_q24my")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_oix12")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-6.5, 0)
+shape = SubResource("RectangleShape2D_apxml")
+
+[node name="cooldown" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="FiringPosition" type="Node2D" parent="."]
+
+[node name="gun" type="Node2D" parent="FiringPosition"]
+position = Vector2(19, -2)

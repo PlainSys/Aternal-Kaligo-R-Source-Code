@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=3 uid="uid://bk5jmgrlti8h8"]
+
+[ext_resource type="FontFile" uid="uid://boaoud50pmd8e" path="res://Assets/Fonts/Press_Start_2P/PressStart2P-Regular.ttf" id="1_6aad2"]
+[ext_resource type="Script" path="res://Scenes/continue.gd" id="1_kaivq"]
+[ext_resource type="FontFile" uid="uid://ce678qpmiwlse" path="res://Assets/Fonts/pixeled/Pixeled.ttf" id="2_v0yxv"]
+
+[node name="Continue" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kaivq")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 294.0
+offset_top = 138.0
+offset_right = 844.0
+offset_bottom = 191.0
+theme_override_fonts/font = ExtResource("1_6aad2")
+theme_override_font_sizes/font_size = 50
+text = "Continue???"
+
+[node name="Yes" type="Button" parent="."]
+layout_mode = 0
+offset_left = 513.0
+offset_top = 251.0
+offset_right = 585.0
+offset_bottom = 315.0
+theme_override_fonts/font = ExtResource("2_v0yxv")
+theme_override_font_sizes/font_size = 20
+text = "Yes
+"
+
+[node name="No" type="Button" parent="."]
+layout_mode = 0
+offset_left = 513.0
+offset_top = 348.0
+offset_right = 585.0
+offset_bottom = 412.0
+theme_override_fonts/font = ExtResource("2_v0yxv")
+theme_override_font_sizes/font_size = 20
+text = "No"
+
+[connection signal="pressed" from="Yes" to="." method="_on_yes_pressed"]
+[connection signal="pressed" from="No" to="." method="_on_no_pressed"]

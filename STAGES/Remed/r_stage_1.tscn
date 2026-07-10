@@ -1,0 +1,179 @@
+[gd_scene load_steps=13 format=3 uid="uid://dvfrpx8wlnjxn"]
+
+[ext_resource type="Script" path="res://STAGES/Remed/r_stage_1.gd" id="1_b3yfh"]
+[ext_resource type="Texture2D" uid="uid://boc4whavxujhd" path="res://Assets/Images/StageArt/Stage1R/newhighway0001.png" id="1_l2uji"]
+[ext_resource type="Texture2D" uid="uid://bxjuwndav7mi3" path="res://Assets/Images/StageArt/Stage1R/newhighway0002.png" id="2_r2g4m"]
+[ext_resource type="Texture2D" uid="uid://bjwjfnxe6se7w" path="res://Assets/Images/StageArt/Stage1R/newhighway0003.png" id="3_gchn6"]
+[ext_resource type="Texture2D" uid="uid://bkyscwdumxgn3" path="res://Assets/Images/StageArt/Stage1R/newhighway0004.png" id="4_pail1"]
+[ext_resource type="PackedScene" uid="uid://mltwxpjepimv" path="res://remed_bike.tscn" id="5_6r6i2"]
+[ext_resource type="AudioStream" uid="uid://8p7fylvjn5y4" path="res://Assets/Music/S_16.wav" id="8_7mv84"]
+[ext_resource type="PackedScene" uid="uid://cwd3tb87s7gxm" path="res://Prefabs/timer.tscn" id="8_7ym8c"]
+[ext_resource type="PackedScene" uid="uid://7rnudj7xqhhl" path="res://STAGES/stage_intro.tscn" id="9_wggvh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gmohr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_l2uji")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_r2g4m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_gchn6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_pail1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_l2uji")
+}],
+"loop": true,
+"name": &"default",
+"speed": 40.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_15mc0"]
+size = Vector2(1219, 233)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pajlo"]
+size = Vector2(111, 892)
+
+[node name="r_stage_1" type="Node2D"]
+script = ExtResource("1_b3yfh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(574, 341)
+scale = Vector2(0.925, 0.925)
+sprite_frames = SubResource("SpriteFrames_gmohr")
+autoplay = "default"
+frame_progress = 0.287911
+
+[node name="RemedBike" parent="." instance=ExtResource("5_6r6i2")]
+position = Vector2(130, 465)
+speed = 550
+
+[node name="border1" type="StaticBody2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="border1"]
+position = Vector2(599.5, 106.5)
+shape = SubResource("RectangleShape2D_15mc0")
+
+[node name="border2" type="StaticBody2D" parent="."]
+position = Vector2(-23, 690)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="border2"]
+position = Vector2(599.5, 106.5)
+shape = SubResource("RectangleShape2D_15mc0")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="wallposition" type="Node" parent="."]
+
+[node name="Position2D" type="Marker2D" parent="wallposition" groups=["spawn2"]]
+position = Vector2(1145, 261)
+
+[node name="Position2D2" type="Marker2D" parent="wallposition" groups=["spawn2"]]
+position = Vector2(1132, 585)
+
+[node name="Position2D3" type="Marker2D" parent="wallposition" groups=["spawn2"]]
+position = Vector2(1153, 466)
+
+[node name="border3" type="StaticBody2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="border3"]
+position = Vector2(-75.5, 436)
+shape = SubResource("RectangleShape2D_pajlo")
+
+[node name="border4" type="StaticBody2D" parent="."]
+position = Vector2(1307, 33)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="border4"]
+position = Vector2(-75.5, 436)
+shape = SubResource("RectangleShape2D_pajlo")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_7mv84")
+autoplay = true
+
+[node name="SurfersBruh" type="Node" parent="."]
+
+[node name="Position2D" type="Marker2D" parent="SurfersBruh" groups=["spawn3"]]
+position = Vector2(48, 274)
+
+[node name="Position2D2" type="Marker2D" parent="SurfersBruh" groups=["spawn3"]]
+position = Vector2(25, 372)
+
+[node name="Position2D3" type="Marker2D" parent="SurfersBruh" groups=["spawn3"]]
+position = Vector2(46, 474)
+
+[node name="Position2D4" type="Marker2D" parent="SurfersBruh" groups=["spawn3"]]
+position = Vector2(29, 583)
+
+[node name="Position2D5" type="Marker2D" parent="SurfersBruh" groups=["spawn3"]]
+position = Vector2(80, 368)
+
+[node name="spawnpositions" type="Node" parent="."]
+
+[node name="Position2D" type="Marker2D" parent="spawnpositions" groups=["spawn"]]
+position = Vector2(1146, 335)
+
+[node name="Position2D2" type="Marker2D" parent="spawnpositions" groups=["spawn"]]
+position = Vector2(1163, 429)
+
+[node name="Position2D3" type="Marker2D" parent="spawnpositions" groups=["spawn"]]
+position = Vector2(1143, 648)
+
+[node name="Position2D4" type="Marker2D" parent="spawnpositions" groups=["spawn"]]
+position = Vector2(1153, 358)
+
+[node name="surferTime" type="Timer" parent="."]
+wait_time = 1.5
+
+[node name="carTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="wallTimer" type="Timer" parent="."]
+
+[node name="Spawn" type="Node2D" parent="."]
+position = Vector2(1155, 299)
+
+[node name="Spawn2" type="Node2D" parent="."]
+position = Vector2(1098, 609)
+
+[node name="Spawn3" type="Node2D" parent="."]
+position = Vector2(16, 432)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 8.0
+autostart = true
+
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 16.0
+autostart = true
+
+[node name="Timer3" type="Timer" parent="."]
+
+[node name="timer" parent="." instance=ExtResource("8_7ym8c")]
+offset_left = 1.0
+offset_top = -24.0
+offset_right = 41.0
+offset_bottom = -1.0
+CD = 100
+
+[node name="StageIntro" parent="." instance=ExtResource("9_wggvh")]
+offset_left = 312.0
+offset_top = 300.0
+offset_right = 312.0
+offset_bottom = 300.0
+
+[connection signal="timeout" from="surferTime" to="." method="_on_surfer_time_timeout"]
+[connection signal="timeout" from="carTimer" to="." method="_on_car_timer_timeout"]
+[connection signal="timeout" from="wallTimer" to="." method="_on_wall_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]

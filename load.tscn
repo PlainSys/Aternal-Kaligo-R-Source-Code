@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b53owe5a5wtnm"]
+
+[ext_resource type="Texture2D" uid="uid://bjlx0p2msbn5b" path="res://Assets/deciro s1 loading.png" id="1_xq52c"]
+[ext_resource type="Script" path="res://load.gd" id="1_y6v41"]
+
+[node name="load" type="CanvasLayer"]
+script = ExtResource("1_y6v41")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+offset_right = 1160.0
+offset_bottom = 651.0
+texture = ExtResource("1_xq52c")

@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://b4auxmtyl0ojp"]
+
+[ext_resource type="Texture2D" uid="uid://85mfk51w3xnm" path="res://Assets/Images/Enemies/BoxySufer/boxysurfer1.png" id="1_mbsho"]
+[ext_resource type="Script" path="res://Scripts/boxysurfer.gd" id="1_rsofa"]
+[ext_resource type="Texture2D" uid="uid://i36xj2s2ibcw" path="res://Assets/Images/Enemies/BoxySufer/boxysurfer2.png" id="2_awuyw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_71uqw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_mbsho")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_awuyw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0tnlu"]
+size = Vector2(37, 8)
+
+[node name="boxysurfer" type="Area2D"]
+scale = Vector2(1.7, 1.7)
+script = ExtResource("1_rsofa")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_71uqw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(13, 4)
+shape = SubResource("RectangleShape2D_0tnlu")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(4.5, 1.5)
+scale = Vector2(4.05, 1.95)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

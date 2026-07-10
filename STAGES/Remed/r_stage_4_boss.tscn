@@ -1,0 +1,215 @@
+[gd_scene load_steps=18 format=3 uid="uid://ci26spivo3y2q"]
+
+[ext_resource type="TileSet" uid="uid://b8kc14ov1y3x2" path="res://TILES.tres" id="1_7sofy"]
+[ext_resource type="Script" path="res://STAGES/Remed/r_stage_4_boss.gd" id="1_8t6mh"]
+[ext_resource type="PackedScene" uid="uid://cr2kcp1i1bqbj" path="res://Prefabs/player_2.tscn" id="2_ucuw1"]
+[ext_resource type="Script" path="res://STAGES/Remed/TrypophobicIce.gd" id="3_5p0mj"]
+[ext_resource type="Texture2D" uid="uid://sty4to1ollnn" path="res://Assets/Images/Boss/TrypophobicIce/try2.png" id="3_8iqby"]
+[ext_resource type="Texture2D" uid="uid://diioqup8pqfye" path="res://Assets/Images/Boss/TrypophobicIce/try1.png" id="3_j8erk"]
+[ext_resource type="Texture2D" uid="uid://mo41wl4ro1sl" path="res://Assets/Images/Effects/oilsplash1.png" id="4_h1nk6"]
+[ext_resource type="Texture2D" uid="uid://b8302csqemmxb" path="res://Assets/Images/Effects/oilsplash2.png" id="5_b28ra"]
+[ext_resource type="Script" path="res://STAGES/Remed/Ice1.gd" id="7_qwd0o"]
+[ext_resource type="Script" path="res://STAGES/Remed/tpiHitbox.gd" id="8_w8f4t"]
+[ext_resource type="PackedScene" uid="uid://b1fav8wtw2kly" path="res://Prefabs/Projectiles/try_projectile.tscn" id="9_jdbhs"]
+[ext_resource type="AudioStream" uid="uid://m77j5ww54tac" path="res://Assets/Sounds/hitsound.wav" id="10_42ydw"]
+[ext_resource type="PackedScene" uid="uid://dn17jj4ut3hh2" path="res://Prefabs/stageend.tscn" id="11_7ofx6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3shx5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_8iqby")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_h1nk6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_b28ra")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_j8erk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bbbpp"]
+size = Vector2(40, 347.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ufwl5"]
+size = Vector2(139, 400)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4jhuj"]
+size = Vector2(137, 87)
+
+[node name="r_stage_4_boss" type="Node2D"]
+script = ExtResource("1_8t6mh")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("1_7sofy")
+format = 2
+layer_0/tile_data = PackedInt32Array(196609, 7, 0, 262145, 7, 0, 327681, 7, 0, 393217, 7, 0, 458753, 7, 0, 524289, 7, 0, 589825, 7, 0, 589826, 7, 0, 589827, 7, 0, 589828, 7, 0, 589829, 7, 0, 589830, 7, 0, 589831, 7, 0, 589832, 7, 0, 589833, 7, 0, 589834, 7, 0, 589835, 7, 0, 589836, 7, 0, 589837, 7, 0, 589838, 7, 0, 589839, 7, 0, 589840, 7, 0, 524304, 7, 0, 458768, 7, 0, 393232, 7, 0, 327696, 7, 0, 262160, 7, 0, 196624, 7, 0, 131088, 7, 0, 65552, 7, 0, 65551, 7, 0, 131087, 7, 0, 131086, 7, 0, 131085, 7, 0, 131084, 7, 0, 65548, 7, 0, 65549, 7, 0, 65550, 7, 0, 65547, 7, 0, 65546, 7, 0, 65545, 7, 0, 65544, 7, 0, 65543, 7, 0, 65542, 7, 0, 65541, 7, 0, 65540, 7, 0, 65539, 7, 0, 65538, 7, 0, 65537, 7, 0, 131073, 7, 0, 131074, 7, 0, 131075, 7, 0, 131076, 7, 0, 131077, 7, 0, 131078, 7, 0, 131079, 7, 0, 131080, 7, 0, 131081, 7, 0, 131082, 7, 0, 131083, 7, 0, 196620, 7, 0, 262156, 7, 0, 327692, 7, 0, 393228, 7, 0, 393229, 7, 0, 458765, 7, 0, 458766, 7, 0, 393230, 7, 0, 327694, 7, 0, 262158, 7, 0, 196622, 7, 0, 196621, 7, 0, 262157, 7, 0, 327693, 7, 0, 458764, 7, 0, 524299, 7, 0, 524300, 7, 0, 524301, 7, 0, 524302, 7, 0, 393231, 7, 0, 327695, 7, 0, 262159, 7, 0, 196623, 7, 0, 458767, 7, 0, 524303, 7, 0, 524298, 7, 0, 524297, 7, 0, 524296, 7, 0, 524295, 7, 0, 524294, 7, 0, 524293, 7, 0, 524292, 7, 0, 524291, 7, 0, 524290, 7, 0, 196610, 7, 0, 262146, 7, 0, 327682, 7, 0, 393218, 7, 0, 458754, 7, 0, 327683, 7, 0, 262147, 7, 0, 196611, 7, 0, 262148, 7, 0, 393219, 7, 0, 458755, 7, 0, 458756, 7, 0, 393220, 7, 0, 393221, 7, 0, 327685, 7, 0, 262149, 7, 0, 196613, 7, 0, 196612, 7, 0, 327684, 7, 0, 458757, 7, 0, 327686, 7, 0, 262150, 7, 0, 196614, 7, 0, 458758, 7, 0, 393222, 7, 0, 196615, 7, 0, 262151, 7, 0, 327687, 7, 0, 393223, 7, 0, 458759, 7, 0, 196616, 7, 0, 262152, 7, 0, 327688, 7, 0, 393224, 7, 0, 458760, 7, 0, 196617, 7, 0, 262153, 7, 0, 327689, 7, 0, 393225, 7, 0, 458761, 7, 0, 196618, 7, 0, 262154, 7, 0, 327690, 7, 0, 393226, 7, 0, 458762, 7, 0, 196619, 7, 0, 262155, 7, 0, 327691, 7, 0, 393227, 7, 0, 458763, 7, 0, 458752, 10, 0, 524288, 10, 0, 589824, 10, 0, 655360, 10, 0, 131072, 10, 0, 65536, 10, 0, 0, 10, 0, 1, 10, 0, 2, 10, 0, 3, 10, 0, 4, 10, 0, 5, 10, 0, 6, 10, 0, 7, 10, 0, 8, 10, 0, 9, 10, 0, 10, 10, 0, 11, 10, 0, -65525, 10, 0, -65524, 10, 0, -65523, 10, 0, -65522, 10, 0, -65521, 10, 0, 16, 10, 0, 15, 10, 0, 14, 10, 0, 13, 10, 0, 12, 10, 0, 131089, 10, 0, 65553, 10, 0, 17, 10, 0, 458769, 10, 0, 524305, 10, 0, 589841, 10, 0, 655377, 10, 0, 655361, 21, 0, 655362, 21, 0, 655363, 21, 0, 655364, 21, 0, 655365, 21, 0, 655366, 21, 0, 655367, 21, 0, 655368, 21, 0, 655369, 21, 0, 655370, 21, 0, 655371, 21, 0, 655372, 21, 0, 655373, 21, 0, 655374, 21, 0, 655375, 21, 0, 655376, 21, 0, 393233, 21, 0, 327697, 21, 0, 262161, 21, 0, 196625, 21, 0, 196608, 21, 0, 262144, 21, 0, 327680, 21, 0, 393216, 21, 0)
+
+[node name="player" parent="." instance=ExtResource("2_ucuw1")]
+position = Vector2(222, 393)
+
+[node name="TrypophobicIce" type="CharacterBody2D" parent="."]
+position = Vector2(1048, 365)
+scale = Vector2(0.6, 0.6)
+script = ExtResource("3_5p0mj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TrypophobicIce"]
+sprite_frames = SubResource("SpriteFrames_3shx5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrypophobicIce"]
+position = Vector2(-46, 24.75)
+shape = SubResource("RectangleShape2D_bbbpp")
+
+[node name="tpiHitbox" type="Area2D" parent="TrypophobicIce"]
+script = ExtResource("8_w8f4t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrypophobicIce/tpiHitbox"]
+position = Vector2(-9.5, 27)
+shape = SubResource("RectangleShape2D_ufwl5")
+debug_color = Color(0.968627, 0, 0.458824, 0.419608)
+
+[node name="death" type="Timer" parent="TrypophobicIce/tpiHitbox"]
+wait_time = 0.1
+
+[node name="bro" type="Timer" parent="TrypophobicIce/tpiHitbox"]
+wait_time = 0.1
+
+[node name="punch" type="Timer" parent="TrypophobicIce"]
+wait_time = 0.9
+
+[node name="FiringPosition" type="Node2D" parent="TrypophobicIce"]
+
+[node name="gun" type="Node2D" parent="TrypophobicIce/FiringPosition"]
+position = Vector2(-133.333, -35)
+
+[node name="cooldown" type="Timer" parent="TrypophobicIce"]
+one_shot = true
+
+[node name="hit" type="AudioStreamPlayer" parent="TrypophobicIce"]
+stream = ExtResource("10_42ydw")
+
+[node name="Ice1" type="Area2D" parent="."]
+visible = false
+position = Vector2(286, 158)
+script = ExtResource("7_qwd0o")
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="Ice1"]
+offset_right = 130.0
+offset_bottom = 79.0
+color = Color(0, 0.854902, 0.854902, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ice1"]
+position = Vector2(65.5, 39.5)
+shape = SubResource("RectangleShape2D_4jhuj")
+
+[node name="Ice2" type="Area2D" parent="."]
+visible = false
+position = Vector2(597, 433)
+script = ExtResource("7_qwd0o")
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="Ice2"]
+offset_right = 130.0
+offset_bottom = 79.0
+color = Color(0, 0.854902, 0.854902, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ice2"]
+position = Vector2(65.5, 39.5)
+shape = SubResource("RectangleShape2D_4jhuj")
+
+[node name="Ice3" type="Area2D" parent="."]
+visible = false
+position = Vector2(773, 169)
+script = ExtResource("7_qwd0o")
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="Ice3"]
+offset_right = 130.0
+offset_bottom = 79.0
+color = Color(0, 0.854902, 0.854902, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ice3"]
+position = Vector2(65.5, 39.5)
+shape = SubResource("RectangleShape2D_4jhuj")
+
+[node name="Ice4" type="Area2D" parent="."]
+visible = false
+position = Vector2(85, 530)
+script = ExtResource("7_qwd0o")
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="Ice4"]
+offset_right = 130.0
+offset_bottom = 79.0
+color = Color(0, 0.854902, 0.854902, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ice4"]
+position = Vector2(65.5, 39.5)
+shape = SubResource("RectangleShape2D_4jhuj")
+
+[node name="Ice5" type="Area2D" parent="."]
+visible = false
+position = Vector2(157, 331)
+script = ExtResource("7_qwd0o")
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="Ice5"]
+offset_right = 130.0
+offset_bottom = 79.0
+color = Color(0, 0.854902, 0.854902, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ice5"]
+position = Vector2(65.5, 39.5)
+shape = SubResource("RectangleShape2D_4jhuj")
+
+[node name="TryProjectile" parent="." instance=ExtResource("9_jdbhs")]
+
+[node name="TimerDeath" type="Timer" parent="TryProjectile"]
+wait_time = 0.1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="StageEnd" parent="CanvasLayer" instance=ExtResource("11_7ofx6")]
+visible = false
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="theme" type="AudioStreamPlayer" parent="."]
+
+[connection signal="area_entered" from="TrypophobicIce/tpiHitbox" to="TrypophobicIce" method="_on_tpi_hitbox_area_entered"]
+[connection signal="area_entered" from="TrypophobicIce/tpiHitbox" to="TrypophobicIce/tpiHitbox" method="_on_area_entered"]
+[connection signal="timeout" from="TrypophobicIce/tpiHitbox/death" to="." method="_on_death_timeout"]
+[connection signal="timeout" from="TrypophobicIce/tpiHitbox/death" to="TrypophobicIce" method="_on_death_timeout"]
+[connection signal="timeout" from="TrypophobicIce/tpiHitbox/bro" to="." method="_on_bro_timeout"]
+[connection signal="timeout" from="TrypophobicIce/punch" to="TrypophobicIce" method="_on_punch_timeout"]
+[connection signal="area_entered" from="Ice1" to="Ice1" method="_on_area_entered"]
+[connection signal="area_entered" from="Ice2" to="Ice2" method="_on_area_entered"]
+[connection signal="area_entered" from="Ice3" to="Ice3" method="_on_area_entered"]
+[connection signal="area_entered" from="Ice4" to="Ice4" method="_on_area_entered"]
+[connection signal="area_entered" from="Ice5" to="Ice5" method="_on_area_entered"]
+[connection signal="timeout" from="TryProjectile/TimerDeath" to="." method="_on_timer_death_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]

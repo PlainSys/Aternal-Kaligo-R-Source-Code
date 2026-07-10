@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://bl1814ffcw878"]
+
+[ext_resource type="Script" path="res://Scripts/cheezer.gd" id="1_2yaur"]
+[ext_resource type="Texture2D" uid="uid://cli35xgi717rs" path="res://Assets/Images/Enemies/Cheezer/Cheezer.png" id="1_tyqua"]
+[ext_resource type="Texture2D" uid="uid://djuukxhk3la52" path="res://Assets/Images/Enemies/Cheezer/Cheezer2.png" id="2_eikd6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7gao7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_tyqua")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_eikd6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lfgfu"]
+size = Vector2(25, 15)
+
+[node name="Cheezer" type="Area2D" groups=["damage"]]
+texture_filter = 1
+script = ExtResource("1_2yaur")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7gao7")
+autoplay = "default"
+frame_progress = 0.95349
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, 1.5)
+shape = SubResource("RectangleShape2D_lfgfu")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

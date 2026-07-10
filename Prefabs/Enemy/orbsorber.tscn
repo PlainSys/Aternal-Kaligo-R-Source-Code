@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://boc52ggpuqib1"]
+
+[ext_resource type="Texture2D" uid="uid://cwcr5ei4jw6jp" path="res://Assets/Images/Enemies/Orbsorber/Orbsorber2.png" id="1_3enib"]
+[ext_resource type="Script" path="res://Scripts/orbsorber.gd" id="1_jlcb8"]
+[ext_resource type="Texture2D" uid="uid://cyr27e8ax2k05" path="res://Assets/Images/Enemies/Orbsorber/Orbsorber.png" id="2_himk4"]
+[ext_resource type="Texture2D" uid="uid://cxv15u1wsjf3e" path="res://Assets/Images/Effects/bloodsplash.png" id="3_xul2p"]
+[ext_resource type="Script" path="res://Scripts/orbhitbox.gd" id="5_30rk8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jf62b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3enib")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_himk4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_xul2p")
+}],
+"loop": true,
+"name": &"die",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0cdlq"]
+size = Vector2(9, 33)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j52vd"]
+size = Vector2(45.3333, 39)
+
+[node name="Orbsorber" type="CharacterBody2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_jlcb8")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_jf62b")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -3.5)
+shape = SubResource("RectangleShape2D_0cdlq")
+
+[node name="orbhitbox" type="Area2D" parent="." groups=["damage"]]
+script = ExtResource("5_30rk8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="orbhitbox"]
+position = Vector2(-15.6667, -3.5)
+shape = SubResource("RectangleShape2D_j52vd")
+debug_color = Color(0.67451, 0, 0.14902, 0.419608)
+
+[node name="Timer" type="Timer" parent="orbhitbox"]
+wait_time = 0.1
+
+[node name="death" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="area_entered" from="orbhitbox" to="orbhitbox" method="_on_area_entered"]
+[connection signal="timeout" from="orbhitbox/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="death" to="." method="_on_death_timeout"]

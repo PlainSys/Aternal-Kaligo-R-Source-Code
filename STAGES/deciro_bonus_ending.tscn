@@ -1,0 +1,78 @@
+[gd_scene load_steps=7 format=3 uid="uid://d4c6a1fy42yv4"]
+
+[ext_resource type="Script" path="res://STAGES/deciro_bonus_ending.gd" id="1_dbbp2"]
+[ext_resource type="Texture2D" uid="uid://0vx5vtcg0xvo" path="res://Assets/endings/bbonusending1.png" id="2_h58bd"]
+[ext_resource type="Texture2D" uid="uid://dfoqx87fs0nir" path="res://Assets/endings/bbonusending2.png" id="3_8fbqq"]
+[ext_resource type="Texture2D" uid="uid://bafjo2yhb54op" path="res://Assets/endings/bbonusending3.png" id="4_52bmu"]
+[ext_resource type="Texture2D" uid="uid://dg7fcbe3smtt6" path="res://Assets/endings/bbonusending4.png" id="5_jyuv4"]
+[ext_resource type="Texture2D" uid="uid://dwfbs4ogi4p0o" path="res://Assets/endings/bbonusending5.png" id="6_yhmj7"]
+
+[node name="DeciroBadEnding" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dbbp2")
+
+[node name="Ending1" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1156.0
+offset_bottom = 659.0
+texture = ExtResource("2_h58bd")
+expand_mode = 1
+
+[node name="Ending2" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 1156.0
+offset_bottom = 659.0
+texture = ExtResource("3_8fbqq")
+expand_mode = 1
+
+[node name="Ending3" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 1156.0
+offset_bottom = 659.0
+texture = ExtResource("4_52bmu")
+expand_mode = 1
+
+[node name="Ending4" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 1156.0
+offset_bottom = 659.0
+texture = ExtResource("5_jyuv4")
+expand_mode = 1
+
+[node name="Ending5" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 1156.0
+offset_bottom = 659.0
+texture = ExtResource("6_yhmj7")
+expand_mode = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+autostart = true
+
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 5.5
+
+[node name="Timer3" type="Timer" parent="."]
+wait_time = 5.5
+
+[node name="Timer4" type="Timer" parent="."]
+wait_time = 4.0
+
+[node name="Timer5" type="Timer" parent="."]
+wait_time = 4.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
+[connection signal="timeout" from="Timer3" to="." method="_on_timer_3_timeout"]
+[connection signal="timeout" from="Timer4" to="." method="_on_timer_4_timeout"]
+[connection signal="timeout" from="Timer5" to="." method="_on_timer_5_timeout"]

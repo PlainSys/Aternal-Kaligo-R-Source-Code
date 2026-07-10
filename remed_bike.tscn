@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://mltwxpjepimv"]
+
+[ext_resource type="Texture2D" uid="uid://c88gmxhvqfrtj" path="res://Assets/Images/Remed/Remedcar1.png" id="1_ewtfa"]
+[ext_resource type="Script" path="res://remed_bike.gd" id="1_hhg63"]
+[ext_resource type="Texture2D" uid="uid://celwymxtwf3i1" path="res://Assets/Images/Remed/Remedcar2.png" id="2_4vxh3"]
+[ext_resource type="Texture2D" uid="uid://d2m4a0ow0jco" path="res://Assets/Images/Remed/Remedcar3.png" id="3_hhkwn"]
+[ext_resource type="AudioStream" uid="uid://dm1j3c6pnj8eb" path="res://Assets/Sounds/laserShoot.wav" id="4_1e836"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_juxp3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ewtfa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_4vxh3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_hhkwn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 24.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yjxcn"]
+size = Vector2(13, 13)
+
+[node name="RemedBike" type="CharacterBody2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_hhg63")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_juxp3")
+autoplay = "default"
+frame_progress = 0.934168
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3.5, 12.5)
+shape = SubResource("RectangleShape2D_yjxcn")
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(22, 12)
+
+[node name="shoot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_1e836")

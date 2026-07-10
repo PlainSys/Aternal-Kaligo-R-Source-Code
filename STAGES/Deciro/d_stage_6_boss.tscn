@@ -1,0 +1,234 @@
+[gd_scene load_steps=14 format=3 uid="uid://bj5iw7o10g7lm"]
+
+[ext_resource type="Script" path="res://STAGES/Deciro/d_stage_6_boss.gd" id="1_gbgdd"]
+[ext_resource type="TileSet" uid="uid://b8kc14ov1y3x2" path="res://TILES.tres" id="1_rnkqd"]
+[ext_resource type="PackedScene" uid="uid://dhvthbxp58i2" path="res://Prefabs/player_1.tscn" id="2_amet1"]
+[ext_resource type="Texture2D" uid="uid://3uhbh6lpf6at" path="res://Assets/Images/StageArt/skybox1.png" id="2_bqf3v"]
+[ext_resource type="PackedScene" uid="uid://dg4u1qq0akl7s" path="res://Prefabs/Bosses/bumathule.tscn" id="3_v0s2i"]
+[ext_resource type="AudioStream" uid="uid://d2de6lj03t3lt" path="res://Assets/Music/S_15.wav" id="6_ho2r4"]
+[ext_resource type="FontFile" uid="uid://boaoud50pmd8e" path="res://Assets/Fonts/Press_Start_2P/PressStart2P-Regular.ttf" id="7_3mhur"]
+[ext_resource type="FontFile" uid="uid://ce678qpmiwlse" path="res://Assets/Fonts/pixeled/Pixeled.ttf" id="8_qrj8o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4q2hm"]
+size = Vector2(1174, 55)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jt0qk"]
+size = Vector2(41, 255)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_txbjp"]
+size = Vector2(277, 44)
+
+[sub_resource type="Animation" id="Animation_f2jpl"]
+resource_name = "anim"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect/Label:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect/Label2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect/ctn:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1, 3.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_glxcv"]
+_data = {
+"anim": SubResource("Animation_f2jpl")
+}
+
+[node name="d_stage_6_boss" type="Node2D"]
+script = ExtResource("1_gbgdd")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.6, 0.305882, 0.305882, 1)
+offset_left = -134.0
+offset_top = -748.0
+offset_right = 1283.0
+offset_bottom = 1185.0
+texture = ExtResource("2_bqf3v")
+expand_mode = 1
+
+[node name="player" parent="." instance=ExtResource("2_amet1")]
+position = Vector2(150, 384)
+
+[node name="Bumathule" parent="." instance=ExtResource("3_v0s2i")]
+position = Vector2(1076, 357)
+scale = Vector2(0.4, 0.4)
+
+[node name="ting" type="Timer" parent="Bumathule"]
+wait_time = 0.1
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("1_rnkqd")
+format = 2
+layer_0/tile_data = PackedInt32Array(458752, 22, 0, 458753, 22, 0, 458754, 22, 0, 458755, 22, 0, 458756, 22, 0, 458757, 22, 0, 458758, 22, 0, 458759, 22, 0, 458760, 22, 0, 458761, 22, 0, 458762, 22, 0, 458763, 22, 0, 458764, 22, 0, 458765, 22, 0, 458766, 22, 0, 458767, 22, 0, 458768, 22, 0, 458769, 22, 0, 458770, 22, 0, 524306, 22, 0, 524305, 22, 0, 589841, 22, 0, 589840, 22, 0, 589839, 22, 0, 589838, 22, 0, 589837, 22, 0, 589836, 22, 0, 589835, 22, 0, 589834, 22, 0, 589833, 22, 0, 589832, 22, 0, 589831, 22, 0, 589830, 22, 0, 589829, 22, 0, 589828, 22, 0, 589827, 22, 0, 589826, 22, 0, 589825, 22, 0, 589824, 22, 0, 655359, 22, 0, 589823, 22, 0, 524287, 22, 0, 524288, 22, 0, 524289, 22, 0, 524290, 22, 0, 524291, 22, 0, 524292, 22, 0, 524293, 22, 0, 524294, 22, 0, 524295, 22, 0, 524296, 22, 0, 524297, 22, 0, 524298, 22, 0, 524299, 22, 0, 524300, 22, 0, 524301, 22, 0, 524302, 22, 0, 524303, 22, 0, 524304, 22, 0, 589842, 22, 0, 720895, 22, 0, 655360, 22, 0, 655361, 22, 0, 655362, 22, 0, 655363, 22, 0, 655364, 22, 0, 655365, 22, 0, 655366, 22, 0, 655367, 22, 0, 655368, 22, 0, 655369, 22, 0, 655370, 22, 0, 655371, 22, 0, 655372, 22, 0, 655373, 22, 0, 655374, 22, 0, 655375, 22, 0, 655376, 22, 0, 655377, 22, 0, 655378, 22, 0)
+
+[node name="border1" type="StaticBody2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="border1"]
+position = Vector2(577, 488.5)
+shape = SubResource("RectangleShape2D_4q2hm")
+
+[node name="border2" type="StaticBody2D" parent="."]
+position = Vector2(0, -217)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="border2"]
+position = Vector2(577, 488.5)
+rotation = 3.14159
+shape = SubResource("RectangleShape2D_4q2hm")
+one_way_collision = true
+
+[node name="spawn" type="Node2D" parent="."]
+position = Vector2(105, 68)
+
+[node name="SpawnPosition" type="Node" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="SpawnPosition" groups=["spawn"]]
+position = Vector2(33, 51)
+
+[node name="Marker2D2" type="Marker2D" parent="SpawnPosition" groups=["spawn"]]
+position = Vector2(191, 51)
+
+[node name="Marker2D3" type="Marker2D" parent="SpawnPosition" groups=["spawn"]]
+position = Vector2(447, 51)
+
+[node name="Marker2D7" type="Marker2D" parent="SpawnPosition" groups=["spawn"]]
+position = Vector2(357, 93)
+
+[node name="Marker2D8" type="Marker2D" parent="SpawnPosition" groups=["spawn"]]
+position = Vector2(545, 31)
+
+[node name="Marker2D9" type="Marker2D" parent="SpawnPosition" groups=["spawn"]]
+position = Vector2(715, 31)
+
+[node name="Marker2D10" type="Marker2D" parent="SpawnPosition" groups=["spawn"]]
+position = Vector2(715, 31)
+
+[node name="Marker2D4" type="Marker2D" parent="SpawnPosition" groups=["spawn"]]
+position = Vector2(809, 51)
+
+[node name="Marker2D5" type="Marker2D" parent="SpawnPosition" groups=["spawn"]]
+position = Vector2(1024, 51)
+
+[node name="Marker2D6" type="Marker2D" parent="SpawnPosition" groups=["spawn"]]
+position = Vector2(603, 68)
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="border3" type="StaticBody2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="border3"]
+position = Vector2(10.5, 342.5)
+shape = SubResource("RectangleShape2D_jt0qk")
+
+[node name="border4" type="StaticBody2D" parent="."]
+position = Vector2(1133, 0)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="border4"]
+position = Vector2(10.5, 342.5)
+shape = SubResource("RectangleShape2D_jt0qk")
+
+[node name="frikyou" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="frikyou"]
+position = Vector2(1082, 362.5)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_txbjp")
+disabled = true
+
+[node name="theme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ho2r4")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Label" type="Label" parent="CanvasLayer/ColorRect"]
+visible = false
+layout_mode = 0
+offset_left = 208.0
+offset_top = 174.0
+offset_right = 1008.0
+offset_bottom = 227.0
+theme_override_colors/font_color = Color(0.8, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_3mhur")
+theme_override_font_sizes/font_size = 50
+text = "GAME COMPLETE!!!"
+
+[node name="Label2" type="Label" parent="CanvasLayer/ColorRect"]
+visible = false
+layout_mode = 0
+offset_left = 418.0
+offset_top = 265.0
+offset_right = 755.0
+offset_bottom = 314.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_qrj8o")
+text = "Game Clear Bonus - 50000"
+
+[node name="ctn" type="Button" parent="CanvasLayer/ColorRect"]
+visible = false
+layout_mode = 0
+offset_left = 508.0
+offset_top = 343.0
+offset_right = 635.0
+offset_bottom = 397.0
+theme_override_fonts/font = ExtResource("8_qrj8o")
+text = "Continue"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
+libraries = {
+"": SubResource("AnimationLibrary_glxcv")
+}
+
+[connection signal="timeout" from="Bumathule/ting" to="." method="_on_ting_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="frikyou" to="." method="_on_frikyou_area_entered"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/ctn" to="." method="_on_ctn_pressed"]

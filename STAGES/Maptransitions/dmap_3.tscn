@@ -1,0 +1,153 @@
+[gd_scene load_steps=8 format=3 uid="uid://cavmyd3uegbuf"]
+
+[ext_resource type="Script" path="res://STAGES/Maptransitions/dmap_1.gd" id="1_wevwl"]
+[ext_resource type="Texture2D" uid="uid://cd1ugn06im12t" path="res://Assets/Images/Deciromap.png" id="2_4vcr5"]
+[ext_resource type="FontFile" uid="uid://boaoud50pmd8e" path="res://Assets/Fonts/Press_Start_2P/PressStart2P-Regular.ttf" id="3_pr6u7"]
+[ext_resource type="FontFile" uid="uid://ce678qpmiwlse" path="res://Assets/Fonts/pixeled/Pixeled.ttf" id="4_0hhss"]
+[ext_resource type="AudioStream" uid="uid://5kb44aar4lk4" path="res://Assets/Music/Newmaptheme.wav" id="5_7nse3"]
+
+[sub_resource type="Animation" id="Animation_731iu"]
+resource_name = "Thing"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("player1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.5, 2, 2.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(390, 127), Vector2(390, 127), Vector2(390, 70), Vector2(448, 70), Vector2(448, 140), Vector2(717, 140)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w2fq4"]
+_data = {
+"Thing": SubResource("Animation_731iu")
+}
+
+[node name="Dmap1" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wevwl")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_4vcr5")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 580.0
+offset_right = 426.0
+offset_bottom = 626.0
+theme_override_colors/font_color = Color(0.494118, 0.0862745, 0.0941176, 1)
+theme_override_fonts/font = ExtResource("3_pr6u7")
+theme_override_font_sizes/font_size = 20
+text = "Bumathule's
+Factory!"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 130.0
+offset_top = 174.0
+offset_right = 280.0
+offset_bottom = 226.0
+theme_override_colors/font_color = Color(0, 0.592157, 0.215686, 1)
+theme_override_fonts/font = ExtResource("4_0hhss")
+theme_override_font_sizes/font_size = 17
+text = "\"Break In\""
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 469.0
+offset_top = 189.0
+offset_right = 687.0
+offset_bottom = 241.0
+theme_override_colors/font_color = Color(0, 0.592157, 0.215686, 1)
+theme_override_fonts/font = ExtResource("4_0hhss")
+theme_override_font_sizes/font_size = 17
+text = "\"Hidden Libary\""
+
+[node name="Label4" type="Label" parent="."]
+layout_mode = 0
+offset_left = 663.0
+offset_top = 49.0
+offset_right = 949.0
+offset_bottom = 101.0
+theme_override_colors/font_color = Color(0, 0.592157, 0.215686, 1)
+theme_override_fonts/font = ExtResource("4_0hhss")
+theme_override_font_sizes/font_size = 17
+text = "\"Emperor's Throne\""
+
+[node name="Label6" type="Label" parent="."]
+layout_mode = 0
+offset_left = 214.0
+offset_top = 395.0
+offset_right = 500.0
+offset_bottom = 447.0
+theme_override_colors/font_color = Color(0.760784, 0, 0.172549, 1)
+theme_override_fonts/font = ExtResource("4_0hhss")
+theme_override_font_sizes/font_size = 17
+text = "First floor"
+
+[node name="Label7" type="Label" parent="."]
+layout_mode = 0
+offset_left = 994.0
+offset_top = 58.0
+offset_right = 1280.0
+offset_bottom = 110.0
+theme_override_colors/font_color = Color(0.760784, 0, 0.172549, 1)
+theme_override_fonts/font = ExtResource("4_0hhss")
+theme_override_font_sizes/font_size = 17
+text = "Rooftop"
+
+[node name="Label5" type="Label" parent="."]
+layout_mode = 0
+offset_left = 994.0
+offset_top = 201.0
+offset_right = 1280.0
+offset_bottom = 253.0
+theme_override_colors/font_color = Color(0, 0.592157, 0.215686, 1)
+theme_override_fonts/font = ExtResource("4_0hhss")
+theme_override_font_sizes/font_size = 17
+text = "\"Unyahzim\""
+
+[node name="player1" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 390.0
+offset_top = 127.0
+offset_right = 418.0
+offset_bottom = 155.0
+color = Color(0, 0.788235, 0.219608, 1)
+
+[node name="player2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 637.0
+offset_top = 406.0
+offset_right = 665.0
+offset_bottom = 434.0
+color = Color(0.533333, 0.196078, 0.596078, 0.266667)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Thing"
+libraries = {
+"": SubResource("AnimationLibrary_w2fq4")
+}
+
+[node name="theme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_7nse3")
+autoplay = true
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

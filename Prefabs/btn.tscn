@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://g158nmn8uoej"]
+
+[ext_resource type="Script" path="res://Scripts/btn.gd" id="1_vmfjo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hi68m"]
+size = Vector2(20, 46)
+
+[node name="BTN" type="Area2D"]
+script = ExtResource("1_vmfjo")
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 28.0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.788235, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(32, 18)
+shape = SubResource("RectangleShape2D_hi68m")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

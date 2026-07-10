@@ -1,0 +1,208 @@
+[gd_scene load_steps=8 format=3 uid="uid://chlybn4lnov5i"]
+
+[ext_resource type="Script" path="res://STAGES/Maptransitions/dmap_1.gd" id="1_qijib"]
+[ext_resource type="Texture2D" uid="uid://xbwi6jovpur6" path="res://Assets/Images/Remedmap.png" id="2_b3gk1"]
+[ext_resource type="FontFile" uid="uid://boaoud50pmd8e" path="res://Assets/Fonts/Press_Start_2P/PressStart2P-Regular.ttf" id="3_a0j6m"]
+[ext_resource type="FontFile" uid="uid://ce678qpmiwlse" path="res://Assets/Fonts/pixeled/Pixeled.ttf" id="4_n2gxw"]
+[ext_resource type="AudioStream" uid="uid://5kb44aar4lk4" path="res://Assets/Music/Newmaptheme.wav" id="5_k8nr5"]
+
+[sub_resource type="Animation" id="Animation_731iu"]
+resource_name = "Thing"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("player1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(602, 408), Vector2(602, 408), Vector2(1030, 408), Vector2(1030, 510)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w2fq4"]
+_data = {
+"Thing": SubResource("Animation_731iu")
+}
+
+[node name="Dmap1" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qijib")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_b3gk1")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 580.0
+offset_right = 426.0
+offset_bottom = 626.0
+theme_override_colors/font_color = Color(0.494118, 0.0862745, 0.0941176, 1)
+theme_override_fonts/font = ExtResource("3_a0j6m")
+theme_override_font_sizes/font_size = 20
+text = "Bumathule's
+Factory!"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 156.0
+offset_top = 205.0
+offset_right = 374.0
+offset_bottom = 257.0
+theme_override_colors/font_color = Color(0.576471, 0, 0.392157, 1)
+theme_override_fonts/font = ExtResource("4_n2gxw")
+theme_override_font_sizes/font_size = 17
+text = "\"Control Panel\""
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 460.0
+offset_top = 103.0
+offset_right = 678.0
+offset_bottom = 155.0
+theme_override_colors/font_color = Color(0.576471, 0, 0.392157, 1)
+theme_override_fonts/font = ExtResource("4_n2gxw")
+theme_override_font_sizes/font_size = 17
+text = "\"Vents\""
+
+[node name="Label4" type="Label" parent="."]
+layout_mode = 0
+offset_left = 840.0
+offset_top = 144.0
+offset_right = 1126.0
+offset_bottom = 196.0
+theme_override_colors/font_color = Color(0.576471, 0, 0.392157, 1)
+theme_override_fonts/font = ExtResource("4_n2gxw")
+theme_override_font_sizes/font_size = 17
+text = "\"Sewage Process\""
+
+[node name="Label6" type="Label" parent="."]
+layout_mode = 0
+offset_left = 183.0
+offset_top = 248.0
+offset_right = 469.0
+offset_bottom = 300.0
+theme_override_colors/font_color = Color(0.760784, 0, 0.172549, 1)
+theme_override_fonts/font = ExtResource("4_n2gxw")
+theme_override_font_sizes/font_size = 17
+text = "First floor"
+
+[node name="Label8" type="Label" parent="."]
+layout_mode = 0
+offset_left = 425.0
+offset_top = 136.0
+offset_right = 711.0
+offset_bottom = 188.0
+theme_override_colors/font_color = Color(0.760784, 0, 0.172549, 1)
+theme_override_fonts/font = ExtResource("4_n2gxw")
+theme_override_font_sizes/font_size = 17
+text = "Factory Vents"
+
+[node name="Label7" type="Label" parent="."]
+layout_mode = 0
+offset_left = 845.0
+offset_top = 199.0
+offset_right = 1131.0
+offset_bottom = 251.0
+theme_override_colors/font_color = Color(0.760784, 0, 0.172549, 1)
+theme_override_fonts/font = ExtResource("4_n2gxw")
+theme_override_font_sizes/font_size = 17
+text = "Factory sewers"
+
+[node name="Label9" type="Label" parent="."]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 376.0
+offset_right = 566.0
+offset_bottom = 428.0
+theme_override_colors/font_color = Color(0.760784, 0, 0.172549, 1)
+theme_override_fonts/font = ExtResource("4_n2gxw")
+theme_override_font_sizes/font_size = 17
+text = "Leads to rooftop"
+
+[node name="Label11" type="Label" parent="."]
+layout_mode = 0
+offset_left = 791.0
+offset_top = 561.0
+offset_right = 1077.0
+offset_bottom = 613.0
+theme_override_colors/font_color = Color(0.760784, 0, 0.172549, 1)
+theme_override_fonts/font = ExtResource("4_n2gxw")
+theme_override_font_sizes/font_size = 17
+text = "First floor"
+
+[node name="Label12" type="Label" parent="."]
+layout_mode = 0
+offset_left = 446.0
+offset_top = 489.0
+offset_right = 732.0
+offset_bottom = 541.0
+theme_override_colors/font_color = Color(0.760784, 0, 0.172549, 1)
+theme_override_fonts/font = ExtResource("4_n2gxw")
+theme_override_font_sizes/font_size = 17
+text = "Exit"
+
+[node name="Label5" type="Label" parent="."]
+layout_mode = 0
+offset_left = 760.0
+offset_top = 319.0
+offset_right = 1046.0
+offset_bottom = 371.0
+theme_override_colors/font_color = Color(0.576471, 0, 0.392157, 1)
+theme_override_fonts/font = ExtResource("4_n2gxw")
+theme_override_font_sizes/font_size = 17
+text = "\"Rooftop Rumble\""
+
+[node name="Label10" type="Label" parent="."]
+layout_mode = 0
+offset_left = 757.0
+offset_top = 481.0
+offset_right = 1043.0
+offset_bottom = 533.0
+theme_override_colors/font_color = Color(0.576471, 0, 0.392157, 1)
+theme_override_fonts/font = ExtResource("4_n2gxw")
+theme_override_font_sizes/font_size = 17
+text = "\"Escaping\""
+
+[node name="player1" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 602.0
+offset_top = 408.0
+offset_right = 630.0
+offset_bottom = 436.0
+color = Color(0.533333, 0.196078, 0.596078, 1)
+
+[node name="player2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 436.0
+offset_top = 72.0
+offset_right = 464.0
+offset_bottom = 100.0
+color = Color(0, 0.788235, 0.219608, 0.266667)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Thing"
+libraries = {
+"": SubResource("AnimationLibrary_w2fq4")
+}
+
+[node name="theme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_k8nr5")
+autoplay = true
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
