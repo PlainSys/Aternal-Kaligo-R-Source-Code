@@ -1,0 +1,68 @@
+ ___    __    _    _  ____  ____    __   
+/ __)  /__\  ( \/\/ )( ___)(  _ \  /__\  
+\__ \ /(__)\  )    (  )__)  ) _ < /(__)\ 
+(___/(__)(__)(__/\__)(____)(____/(__)(__)
+
+
+               Saweba
+          The First Mission
+               Manual
+                         2021 Aranorten
+
+Table of Contents
+1. Main story
+2. Playable Characters
+3. Navigating the main menu
+4. Controls
+5. Gameplay
+6. Credits
+
+⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-
+	✪Main Story✪
+
+After the events of PolyHeck, Binersa and Remed got hired by an assassination company known as Gapila Corp.
+Their mission was to hunt down Bumathule in order to retrieve an artifact known as the Dream Box. Remed
+was sent first before Binersa and his new pal Yellow were sent. The trio must traverse through Bumathule's
+facility in order to find and kill him. Along the way however, the three will face off against new foes
+and meet some old foes?!
+
+⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-
+	✪Playable Characters✪
+
+Binersa: Binersa aka Shooterbot is the main character. He has an arm cannon and can shoot from afar, but is
+very slow when compared to his friend.
+
+Remed: Remed has a spear and not a sword this time. Remed is super fast but cant shoot like Binersa, instead
+having to rely on his spear to attack.
+
+Where is Remed's sword? uhhh.... find out in Saweba 2 woooooo.
+
+⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-
+	✪Navigating the main menu✪
+
+This is what the main menu should look like.
+
+         Start <- Starts the game. Pick the character of your choosing and begin
+      Extra Start <- Play the extra stage, you have to beat the game without continues first
+        Options <- Modify your settings like lives or fullscreen or to enable or disable announcer
+         Quit <- Leave the game
+
+⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-
+	✪Controls✪
+
+Arrow keys to move and Z to attack.
+
+⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-
+	✪Gameplay✪
+
+  The goal of the game is to beat every stage to progress to stage 6 and beat Bumathule. Most stages have
+maze like areas you must navigate to fight the boss. Buttons are also a thing which you must shoot/slash to
+progress. Some stages have timers though, where you have to wait for a certain time to beat the stage.
+Anyways, goodluck dodging and beating every stage!
+
+⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-⊛-
+	✪Credits✪
+
+Plain: Creator, Programmer, Artist, Musician, Level Designer, Boss Designer
+ddsnag: Created some of the bosses, voice acted as Binersa and Remed
+gogomonow: Voice acted announcer
