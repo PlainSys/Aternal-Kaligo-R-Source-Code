@@ -41,8 +41,7 @@ I looked up some Latin shit cuz that always goes hard and I got Caligo I think w
 means darkness. I stylized eternal and caligo and bam, funny name.
 
 How to open project:
-This was made with Godot 4 (idk which specific version but I think I downloaded Godot as
-recently as 2023-early 2024 before uninstalling. Anyways download the folder, open it in
+This was made with Godot 4.1 so if you have that, good... if not then I don't know what to tell you. Anyways download the folder, open it in
 Godot, you should have the contents of the folder.
 
 What can I do with this?
